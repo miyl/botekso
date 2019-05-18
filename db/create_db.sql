@@ -36,8 +36,8 @@ CREATE TABLE webhooks (
   auth_type VARCHAR(60) NOT NULL,   -- TINYINT or FOREIGN KEY to table of authentication methods?
   url VARCHAR(255) NOT NULL,
   body TEXT NOT NULL,
-  response_on_success TEXT NOT NULL, -- Maybe there's several different responses for success and error, so it should really be a foreign key into a response table?
-  response_on_error TEXT NOT NULL,
+  response_on_success INT NOT NULL, -- Maybe there's several different responses for success and error, so it should really be a foreign key into a response table?
+  response_on_error INT NOT NULL,   -- Also unsure what type these should be. Currently we assume they're HTTP Response Status codes.
 
   customer VARCHAR(60) NOT NULL,
   FOREIGN KEY (customer) REFERENCES customers(name),
