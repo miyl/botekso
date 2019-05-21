@@ -6,12 +6,14 @@ USE botxo;
 DROP TABLE IF EXISTS webhooks;
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS frontend_users;
+DROP TABLE IF EXISTS auth_types;
+DROP TABLE IF EXISTS http_request_types;
 DROP TABLE IF EXISTS api_keys;
 
 CREATE TABLE customers (
   name VARCHAR(60) PRIMARY KEY,
   email VARCHAR(60) NOT NULL,
-  tel VARCHAR(60) NOT NULL
+  tel VARCHAR(15) NOT NULL
 );
 
 CREATE TABLE frontend_users (
@@ -21,24 +23,23 @@ CREATE TABLE frontend_users (
 );
 
 CREATE TABLE auth_types (
-  auth_type VARCHAR(50) PRIMARY KEY
+  auth_type VARCHAR(30) PRIMARY KEY
 );
 
 CREATE TABLE http_request_types (
-  http_request_type VARCHAR(50) PRIMARY KEY
+  http_request_type VARCHAR(30) PRIMARY KEY
 );
-
 
 CREATE TABLE webhooks (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(100),
-  http_request_type VARCHAR(60) NOT NULL, -- TINYINT or FOREIGN KEY to table of types?
-  auth_type VARCHAR(60) NOT NULL,   -- TINYINT or FOREIGN KEY to table of authentication methods?
   url VARCHAR(255) NOT NULL,
-  body TEXT NOT NULL,
-  response_on_success INT NOT NULL, -- Maybe there's several different responses for success and error, so it should really be a foreign key into a response table?
-  response_on_error INT NOT NULL,   -- Also unsure what type these should be. Currently we assume they're HTTP Response Status codes.
+  body TEXT,
+  response_on_success INT(4) NOT NULL, -- Maybe there's several different responses for success and error, so it should really be a foreign key into a response table?
+  response_on_error INT(4) NOT NULL,   -- Also unsure what type these should be. Currently we assume they're HTTP Response Status codes.
 
+  http_request_type VARCHAR(30) NOT NULL, -- TINYINT or FOREIGN KEY to table of types?
+  auth_type VARCHAR(30) NOT NULL,   -- TINYINT or FOREIGN KEY to table of authentication methods?
   customer VARCHAR(60) NOT NULL,
   FOREIGN KEY (customer) REFERENCES customers(name),
   FOREIGN KEY (http_request_type) REFERENCES http_request_types(http_request_type),
@@ -47,7 +48,8 @@ CREATE TABLE webhooks (
 
 -- Describes the specific ships in a scenario
 CREATE TABLE api_keys (
-  `key` VARCHAR(255) PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  `key` VARCHAR(255) UNIQUE NOT NULL,
 
   customer VARCHAR(60) NOT NULL,
   FOREIGN KEY (customer) REFERENCES customers(name)
