@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Webhook List</title>
+</head>
+<body>
+
+<p th:each="webhook : ${ListWebhooks}"}>
+    <span th:text="${webhook.name}"></span>
+    <span th:text="${webhook.url}"></span>
+    <span th:text="${webhook.body}"></span>
+    <span th:text="${webhook.respOnSuccess}"></span>
+    <span th:text="${webhook.respOnError}"></span>
+</p>
+
+</body>
+</html>

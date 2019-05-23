@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Webhook Form</title>
+</head>
+<body>
+
+<!--th:action= skal umiddelbartpege på den i Controlleren-->
+<!--th:object skal hedde det samme som det objekt der bliver oprettet i controllern.-->
+    <form action="#" th:action="@{/WebhookForm}" th:object="${webhook}" method="post">
+        <table>
+            <tr>
+                <td>Webhook name:</td>
+                <!-- Der skal henvises til attribut navnet i klassen. -->
+                <td><input type="text" th:field="*{name}" /></td>
+                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name error</td>
+            </tr>
+
+            <tr>
+                <td>URL:</td>
+                <td><input type="text" th:field="*{url}" /></td>
+                <td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">url error</td>
+
+            </tr>
+
+            <tr>
+                <td>Body:</td>
+                <td><input type="text" th:field="*{body}" /></td>
+                <td th:if="${#fields.hasErrors('body')}" th:errors="*{body}">body error</td>
+            </tr>
+
+            <tr>
+                <td>Response on Success:</td>
+                <td><input type="text" th:field="*{respOnSuccess}" /></td>
+                <td th:if="${#fields.hasErrors('respOnSuccess')}" th:errors="*{respOnSuccess}">Response On Success</td>
+            </tr>
+
+            <tr>
+                <td>Response on Error:</td>
+                <td><input type="text" th:field="*{respOnError}" /></td>
+                <td th:if="${#fields.hasErrors('respOnError')}" th:errors="*{respOnError}">Response On Error</td>
+            </tr>
+
+            <tr>
+                <td>Choose Customer:</td>
+                <td>
+                    <select>
+                        <p th:each="customer : ${customers}">
+                            <option th:text="${customer.name}"></option>
+                        </p>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><button type="Submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

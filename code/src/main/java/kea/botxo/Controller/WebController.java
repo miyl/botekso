@@ -13,9 +13,8 @@ import kea.botxo.Model.Customer;
 import kea.botxo.Model.Webhook;
 import kea.botxo.Service.SeCustomer;
 import kea.botxo.Service.SeWebhook;
-
 import javax.validation.Valid;
-import java.util.List;
+
 
 @Controller
 public class WebController implements WebMvcConfigurer {
