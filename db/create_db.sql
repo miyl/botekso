@@ -2,13 +2,14 @@ DROP DATABASE IF EXISTS botxo;
 CREATE DATABASE botxo;
 USE botxo;
 
--- The default CHARACTER SET should be utf8mb4 so it doesn't have to be specified for each table
 DROP TABLE IF EXISTS webhooks;
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS frontend_users;
 DROP TABLE IF EXISTS auth_types;
 DROP TABLE IF EXISTS http_request_types;
 DROP TABLE IF EXISTS api_keys;
+
+-- The default CHARACTER SET should be utf8mb4 so it doesn't have to be specified for each table
 
 CREATE TABLE customers (
   name VARCHAR(60) PRIMARY KEY,
@@ -46,12 +47,10 @@ CREATE TABLE webhooks (
   FOREIGN KEY (auth_type) REFERENCES auth_types(auth_type)
 );
 
--- Describes the specific ships in a scenario
 CREATE TABLE api_keys (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  `key` VARCHAR(255) UNIQUE NOT NULL,
+  `key` VARCHAR(100) PRIMARY KEY,
 
   customer VARCHAR(60) NOT NULL,
-  FOREIGN KEY (customer) REFERENCES customers(name)
-  -- CHECK (direction BETWEEN 30 AND 330)
+  FOREIGN KEY (customer) REFERENCES customers(name),
+  CHECK ( char_length(`key`) = 100 )
 );
