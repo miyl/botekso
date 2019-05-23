@@ -42,7 +42,8 @@ public class WebController implements WebMvcConfigurer {
 
     //Post webhook
     @PostMapping("/WebhookForm")
-    public String checkWebhookInfo(@Valid Webhook webhook, BindingResult bindingResult){
+    public String checkWebhookInfo(@Valid Webhook webhook, BindingResult bindingResult, Model model){
+        model.addAttribute("customers", seCustomer.fetchAll());
         if(bindingResult.hasErrors()){
             return "WebhookForm";
         }
