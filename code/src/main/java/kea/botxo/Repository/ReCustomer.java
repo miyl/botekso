@@ -10,9 +10,12 @@ public class ReCustomer {
 
     public ReCustomer(){}
 
-    public Customer fetch(){
+    public Customer fetch(String name){
         //dummy data
         Customer customer = new Customer();
+        customer.setName("Hans Grethe");
+        customer.setEmail("Jajaj@kds.dk");
+        customer.setTel("23232323");
         return customer;
     }
 
@@ -35,5 +38,17 @@ public class ReCustomer {
         customerList.add(customer2);
         return customerList;
 
+    }
+
+    public boolean update(Customer customer){
+        return true;
+    }
+
+    public boolean delete(String name) {
+        return true;
+    }
+
+    public boolean add(Customer customer){
+        return true;
     }
 }

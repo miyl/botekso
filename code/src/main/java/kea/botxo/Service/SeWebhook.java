@@ -20,4 +20,23 @@ public class SeWebhook {
     public List<Webhook> fetchAll(){
         return reWebhook.fetchAll();
     }
+    public boolean update(Webhook webhook){
+        if(reWebhook.update(webhook)){
+            return true;
+        }
+        return false;
+    }
+    public boolean delete(int id){
+        if(reWebhook.delete(id)){
+            return true;
+        }
+        return false;
+    }
+    public boolean add(Webhook webhook){
+        if(reWebhook.add(webhook)){
+            return true;
+        }
+        return false;
+    }
+
 }

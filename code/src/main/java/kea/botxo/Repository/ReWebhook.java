@@ -8,6 +8,7 @@ import java.util.List;
 @Repository
 public class ReWebhook {
 
+
     public ReWebhook(){}
 
     public Webhook fetch(int id){
@@ -44,5 +45,19 @@ public class ReWebhook {
         webhooks.add(webhook2);
         return webhooks;
     }
+
+    public boolean update(Webhook webhook){
+        //update
+        return true;
+    }
+
+    public boolean delete(int id){
+        return true;
+    }
+
+    public boolean add(Webhook webhook){
+        return true;
+    }
+
 
 }
