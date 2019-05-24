@@ -43,6 +43,7 @@ hs_err_pid*
 # Visual paradigm backup files
 *.vpp.bak_*
 *.vpp.lck
+*.vbak
 
 # project specific
 **/application.properties
