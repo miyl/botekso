@@ -93,10 +93,12 @@ public class WebController implements WebMvcConfigurer {
         return "Login";
     }
 
-    @PostMapping("/")
-    public String submitLogin(WebRequest webRequest, Model model){
+    @PostMapping("/validateLogin")
+    public String validateLogin(WebRequest webRequest, Model model){
         String loginname = webRequest.getParameter("name");
         String password = webRequest.getParameter("password");
+
+
 
         return "Results";
     }

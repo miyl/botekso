@@ -12,12 +12,28 @@ public class ReUser {
 
     public User fetch(String name) {
 
+        //dummy data
         User user = new User();
+        user.setName("Hans");
+        user.setPassword("hejhej");
+
         return user;
     }
 
     public List<User> fetchAll() {
         List<User> userList = new ArrayList<>();
+
+        //dummy data
+        User user = new User();
+        user.setName("Hans");
+        user.setPassword("hejhej");
+
+        User user2 = new User();
+        user.setName("Grethe");
+        user.setPassword("hejhej");
+
+        userList.add(user);
+        userList.add(user2);
 
         return userList;
     }
