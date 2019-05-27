@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kea.botxo.Model.User;
 import kea.botxo.Repository.ReUser;
-import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class SeUser {
@@ -32,6 +32,10 @@ public class SeUser {
 
     public void delete(User user) {
         reUser.delete(user);
+    }
+
+    public boolean validateLogin(String name, String password){
+        return true;
     }
 
 }

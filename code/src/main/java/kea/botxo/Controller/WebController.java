@@ -87,20 +87,24 @@ public class WebController implements WebMvcConfigurer {
         return "ListWebhooks";
     }
 
+
+    //Se her https://spring.io/guides/gs/securing-web/
     //Show Login Page
     @GetMapping("/")
     public String showLoginPage(){
         return "Login";
     }
 
-    @PostMapping("/validateLogin")
+    @PostMapping("/ValidateLogin")
     public String validateLogin(WebRequest webRequest, Model model){
         String loginname = webRequest.getParameter("name");
         String password = webRequest.getParameter("password");
+        if(seUser.validateLogin(loginname, password)){
+            return "Results";
+        }
 
+        return "errorpage";
 
-
-        return "Results";
     }
 
 
