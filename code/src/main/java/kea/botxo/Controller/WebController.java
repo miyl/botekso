@@ -1,11 +1,14 @@
 package kea.botxo.Controller;
 
+import kea.botxo.Repository.ReUser;
+import kea.botxo.Service.SeUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import kea.botxo.Model.User;
@@ -23,6 +26,10 @@ public class WebController implements WebMvcConfigurer {
 
     @Autowired
     SeCustomer seCustomer;
+    @Autowired
+    SeWebhook seWebhook;
+    @Autowired
+    SeUser seUser;
 
 
     @Override
@@ -74,15 +81,24 @@ public class WebController implements WebMvcConfigurer {
         return "redirect:/Results";
     }
 
-
-    //List Webhooks
-    @Autowired
-    SeWebhook seWebhook;
-
     @GetMapping("/ListWebhooks")
     public String showListWebhooks(Model model){
         model.addAttribute("ListWebhooks", seWebhook.fetchAll());
         return "ListWebhooks";
+    }
+
+    //Show Login Page
+    @GetMapping("/")
+    public String showLoginPage(){
+        return "Login";
+    }
+
+    @PostMapping("/")
+    public String submitLogin(WebRequest webRequest, Model model){
+        String loginname = webRequest.getParameter("name");
+        String password = webRequest.getParameter("password");
+
+        return "Results";
     }
 
 
