@@ -27,9 +27,7 @@ public class WebController implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/WebhookFormResults").setViewName("WebhookFormResult");
-        registry.addViewController("/CustomerFormResults").setViewName("CustomerFormResults");
-        registry.addViewController("/CreateuserResults").setViewName("CreateUserResults");
+        registry.addViewController("/Results").setViewName("Results");
     }
 
     //Vis Webhook Formular
@@ -47,7 +45,7 @@ public class WebController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "WebhookForm";
         }
-        return "redirect:/WebhookFormResults";
+        return "redirect:/Results";
     }
 
     //customer formular
@@ -60,7 +58,7 @@ public class WebController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "CustomerForm";
         }
-        return "redirect:/CustomerFormResults";
+        return "redirect:/Results";
     }
 
     //vis create user formular
@@ -73,7 +71,7 @@ public class WebController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "CreateUserForm";
         }
-        return "redirect:/CreateUserResults";
+        return "redirect:/Results";
     }
 
 
