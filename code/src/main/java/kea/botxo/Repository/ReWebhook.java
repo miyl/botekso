@@ -1,5 +1,6 @@
 package kea.botxo.Repository;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import kea.botxo.Model.Webhook;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 @Repository
 public class ReWebhook {
 
+    JdbcTemplate template;
 
     public ReWebhook(){}
 
@@ -56,6 +58,7 @@ public class ReWebhook {
     }
 
     public boolean add(Webhook webhook){
+
         return true;
     }
 

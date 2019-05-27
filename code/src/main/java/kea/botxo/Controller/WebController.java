@@ -1,11 +1,14 @@
 package kea.botxo.Controller;
 
+import kea.botxo.Repository.ReUser;
+import kea.botxo.Service.SeUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import kea.botxo.Model.User;
@@ -23,13 +26,15 @@ public class WebController implements WebMvcConfigurer {
 
     @Autowired
     SeCustomer seCustomer;
+    @Autowired
+    SeWebhook seWebhook;
+    @Autowired
+    SeUser seUser;
 
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/WebhookFormResults").setViewName("WebhookFormResult");
-        registry.addViewController("/CustomerFormResults").setViewName("CustomerFormResults");
-        registry.addViewController("/CreateuserResults").setViewName("CreateUserResults");
+        registry.addViewController("/Results").setViewName("Results");
     }
 
     //Vis Webhook Formular
@@ -47,7 +52,7 @@ public class WebController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "WebhookForm";
         }
-        return "redirect:/WebhookFormResults";
+        return "redirect:/Results";
     }
 
     //customer formular
@@ -60,10 +65,10 @@ public class WebController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "CustomerForm";
         }
-        return "redirect:/CustomerFormResults";
+        return "redirect:/Results";
     }
 
-    //create user formular
+    //vis create user formular
     @GetMapping("/CreateUserForm")
     public String showCreateUserForm(User user){
         return "CreateUserForm";
@@ -73,18 +78,33 @@ public class WebController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "CreateUserForm";
         }
-        return "redirect:/CreateUserResults";
+        return "redirect:/Results";
     }
-
-
-    //List Webhooks
-    @Autowired
-    SeWebhook seWebhook;
 
     @GetMapping("/ListWebhooks")
     public String showListWebhooks(Model model){
         model.addAttribute("ListWebhooks", seWebhook.fetchAll());
         return "ListWebhooks";
+    }
+
+
+    //Se her https://spring.io/guides/gs/securing-web/
+    //Show Login Page
+    @GetMapping("/")
+    public String showLoginPage(){
+        return "Login";
+    }
+
+    @PostMapping("/ValidateLogin")
+    public String validateLogin(WebRequest webRequest, Model model){
+        String loginname = webRequest.getParameter("name");
+        String password = webRequest.getParameter("password");
+        if(seUser.validateLogin(loginname, password)){
+            return "Results";
+        }
+
+        return "errorpage";
+
     }
 
 
