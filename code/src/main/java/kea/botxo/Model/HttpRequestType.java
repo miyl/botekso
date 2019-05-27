@@ -4,6 +4,8 @@ import javax.validation.constraints.*;
 
 public class HttpRequestType {
 
-  String httpRequestType;
+    @NotNull
+    @Size(min=1, max=30)
+    private String httpRequestType;
   
 }

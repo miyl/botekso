@@ -4,6 +4,8 @@ import javax.validation.constraints.*;
 
 public class AuthType {
 
-  String authType;
+    @NotNull
+    @Size(min=1, max=30)
+    private String authType;
   
 }
