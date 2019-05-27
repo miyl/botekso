@@ -2,6 +2,8 @@ package kea.botxo.Model;
 
 import javax.validation.constraints.*;
 
-public class APIKey {
+public class HttpRequestType {
+
+  String httpRequestType;
   
 }

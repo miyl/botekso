@@ -1,9 +1,9 @@
 package kea.botxo.Repository;
 
 import org.springframework.stereotype.Repository;
-import kea.botxo.Model.HTTPRequestType;
+import kea.botxo.Model.HttpRequestType;
 
 @Repository
-public class ReHTTPRequestType {
+public class ReHttpRequestType {
   
 }
