@@ -63,7 +63,7 @@ public class WebController implements WebMvcConfigurer {
         return "redirect:/CustomerFormResults";
     }
 
-    //create user formular
+    //vis create user formular
     @GetMapping("/CreateUserForm")
     public String showCreateUserForm(User user){
         return "CreateUserForm";
