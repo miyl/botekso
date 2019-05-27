@@ -1,7 +1,5 @@
 package kea.botxo.Controller;
 
-import kea.botxo.Repository.ReUser;
-import kea.botxo.Service.SeUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +9,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import kea.botxo.Model.User;
 import kea.botxo.Model.Customer;
 import kea.botxo.Model.Webhook;
+
 import kea.botxo.Service.SeCustomer;
 import kea.botxo.Service.SeWebhook;
+import kea.botxo.Service.SeUser;
+import kea.botxo.Service.SeAuthType;
+import kea.botxo.Service.SeHttpRequestType;
+import kea.botxo.Service.SeApiKey;
+
 import javax.validation.Valid;
 
 
@@ -30,6 +35,12 @@ public class WebController implements WebMvcConfigurer {
     SeWebhook seWebhook;
     @Autowired
     SeUser seUser;
+    @Autowired
+    SeApiKey seApiKey;
+    @Autowired
+    SeAuthType seAuthType;
+    @Autowired
+    SeHttpRequestType seHttpRequestType;
 
 
     @Override
@@ -37,56 +48,7 @@ public class WebController implements WebMvcConfigurer {
         registry.addViewController("/Results").setViewName("Results");
     }
 
-    //Vis Webhook Formular
-    @GetMapping("/WebhookForm")
-    public String showWebhookForm(Webhook webhook, Model model){
-        //tilføjelse af customers til webhook formular.
-        model.addAttribute("customers", seCustomer.fetchAll());
-        return "WebhookForm";
-    }
-
-    //Post webhook
-    @PostMapping("/WebhookForm")
-    public String checkWebhookInfo(@Valid Webhook webhook, BindingResult bindingResult, Model model){
-        model.addAttribute("customers", seCustomer.fetchAll());
-        if(bindingResult.hasErrors()){
-            return "WebhookForm";
-        }
-        return "redirect:/Results";
-    }
-
-    //customer formular
-    @GetMapping("/CustomerForm")
-    public String showCustomerForm(Customer customer){
-        return "CustomerForm";
-    }
-    @PostMapping("/CustomerForm")
-    public String checkCustomerInfo(@Valid Customer customer, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
-            return "CustomerForm";
-        }
-        return "redirect:/Results";
-    }
-
-    //vis create user formular
-    @GetMapping("/CreateUserForm")
-    public String showCreateUserForm(User user){
-        return "CreateUserForm";
-    }
-    @PostMapping("/CreateUserResults")
-    public String checkUserInfo(@Valid User user, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
-            return "CreateUserForm";
-        }
-        return "redirect:/Results";
-    }
-
-    @GetMapping("/ListWebhooks")
-    public String showListWebhooks(Model model){
-        model.addAttribute("ListWebhooks", seWebhook.fetchAll());
-        return "ListWebhooks";
-    }
-
+    // LOGIN
 
     //Se her https://spring.io/guides/gs/securing-web/
     //Show Login Page
@@ -107,5 +69,86 @@ public class WebController implements WebMvcConfigurer {
 
     }
 
+    // WEBHOOK
 
+    //Vis Webhook Formular
+    @GetMapping("/WebhookForm")
+    public String showWebhookForm(Webhook webhook, Model model){
+        //tilføjelse af customers til webhook formular.
+        model.addAttribute("customers", seCustomer.fetchAll());
+        return "WebhookForm";
+    }
+
+    //Post webhook
+    @PostMapping("/WebhookForm")
+    public String checkWebhookInfo(@Valid Webhook webhook, BindingResult bindingResult, Model model){
+        model.addAttribute("customers", seCustomer.fetchAll());
+        if(bindingResult.hasErrors()){
+            return "WebhookForm";
+        }
+        return "redirect:/Results";
+    }
+
+    @GetMapping("/ListWebhooks")
+    public String showListWebhooks(Model model){
+        model.addAttribute("ListWebhooks", seWebhook.fetchAll());
+        return "ListWebhooks";
+    }
+
+    // CUSTOMER
+
+    //customer formular
+    @GetMapping("/CustomerForm")
+    public String showCustomerForm(Customer customer){
+        return "CustomerForm";
+    }
+
+    @PostMapping("/CustomerForm")
+    public String checkCustomerInfo(@Valid Customer customer, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "CustomerForm";
+        }
+        return "redirect:/Results";
+    }
+
+    // USER
+
+    //vis create user formular
+    @GetMapping("/CreateUserForm")
+    public String showCreateUserForm(User user){
+        return "CreateUserForm";
+    }
+
+    @PostMapping("/CreateUserResults")
+    public String checkUserInfo(@Valid User user, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "CreateUserForm";
+        }
+        return "redirect:/Results";
+    }
+
+    // API-KEY
+    
+    @GetMapping("/ListApiKeys")
+    public String showListApiKeys(Model model){
+        // Udkommenteret indtil metoden er lavet
+        // model.addAttribute("ListApiKeys", seApiKey.fetchAll());
+        return "ListApiKeys";
+    }
+    
+    // HTTP REQUEST TYPES
+    
+    @GetMapping("/ListHttpRequestTypes")
+    public String showListHttpRequestTypes(Model model){
+        model.addAttribute("ListHttpRequestTypes", seHttpRequestType.fetchAll());
+        return "ListHttpRequestTypes";
+    }
+    
+    // AUTH TYPES
+    
+    @GetMapping("/ListAuthTypes")
+    public String showListAuthTypes(Model model){
+        model.addAttribute("ListAuthTypes", seAuthType.fetchAll());
+        return "ListAuthTypes";
+    }
 }
