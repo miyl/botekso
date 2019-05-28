@@ -120,6 +120,13 @@ public class FrontendController implements WebMvcConfigurer {
 
     // USER
 
+    @GetMapping("/ListUsers")
+    public String showListUsers(Model model){
+        // Udkommenteret indtil metoden er lavet
+        // model.addAttribute("ListApiKeys", seApiKey.fetchAll());
+        return "ListUsers";
+    }
+
     //vis create user formular
     @GetMapping("/CreateUserForm")
     public String showCreateUserForm(User user){
@@ -158,4 +165,7 @@ public class FrontendController implements WebMvcConfigurer {
         model.addAttribute("ListAuthTypes", seAuthType.fetchAll());
         return "ListAuthTypes";
     }
+
+
+
 }
