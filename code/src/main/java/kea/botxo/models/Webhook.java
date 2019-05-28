@@ -44,6 +44,10 @@ public class Webhook {
     @Max(9999)
     private int responseOnError;
 
+    // TODO: It should probably have an HttpRequestType and AuthType as well, corresponding to its foreign keys?
+    private Customer customer;
+
+
     public String getName() {
         return name;
     }
@@ -82,5 +86,13 @@ public class Webhook {
 
     public void setResponseOnError(int responseOnError) {
         this.responseOnError = responseOnError;
+    }
+
+    public Customer getCustomer() {
+      return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+      this.customer = customer;
     }
 }
