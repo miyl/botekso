@@ -43,7 +43,7 @@ public class Webhook {
     @Min(1)
     @Max(9999)
     private int responseOnError;
-    
+
     public String getName() {
         return name;
     }
