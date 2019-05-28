@@ -86,11 +86,11 @@ public class FrontendController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "WebhookForm";
         }
-        String customername = wr.getParameter("customer");
+        //String customername = wr.getParameter("customer");
         seWebhook.add(webhook);
         return "redirect:/Results";
     }
-    
+
     @GetMapping("/ListWebhooks")
     public String showListWebhooks(Model model){
         model.addAttribute("ListWebhooks", seWebhook.fetchAll());

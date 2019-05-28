@@ -43,20 +43,7 @@ public class Webhook {
     @Min(1)
     @Max(9999)
     private int responseOnError;
-
-
-    Customer customer;
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-
-
+    
     public String getName() {
         return name;
     }
