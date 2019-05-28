@@ -37,13 +37,12 @@ public class Webhook {
     @NotNull
     @Min(1)
     @Max(9999)
-    private int respOnSuccess;
+    private int responseOnSuccess;
 
     @NotNull
     @Min(1)
     @Max(9999)
-    private int respOnError;
-
+    private int responseOnError;
 
     public String getName() {
         return name;
@@ -69,19 +68,19 @@ public class Webhook {
         this.body = body;
     }
 
-    public int getRespOnSuccess() {
-        return respOnSuccess;
+    public int getResponseOnSuccess() {
+        return responseOnSuccess;
     }
 
-    public void setRespOnSuccess(int respOnSuccess) {
-        this.respOnSuccess = respOnSuccess;
+    public void setResponseOnSuccess(int responseOnSuccess) {
+        this.responseOnSuccess = responseOnSuccess;
     }
 
-    public int getRespOnError() {
-        return respOnError;
+    public int getResponseOnError() {
+        return responseOnError;
     }
 
-    public void setRespOnError(int respOnError) {
-        this.respOnError = respOnError;
+    public void setResponseOnError(int responseOnError) {
+        this.responseOnError = responseOnError;
     }
 }

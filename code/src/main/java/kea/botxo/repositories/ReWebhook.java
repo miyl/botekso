@@ -22,8 +22,8 @@ public class ReWebhook {
         //dummy data
         Webhook webhook = new Webhook();
         webhook.setName("Nametest");
-        webhook.setRespOnError(2);
-        webhook.setRespOnSuccess(3);
+        webhook.setResponseOnError(2);
+        webhook.setResponseOnSuccess(3);
         webhook.setUrl("https://hej.dk");
         webhook.setBody("bodytest");
         return webhook;
@@ -67,13 +67,14 @@ public class ReWebhook {
         return true;
     }
 
-    public void add(Webhook webhook){
+    public void add(Webhook webhook, String customername){
         //TODO: skal fixes som er hardcoded.
+        //de 3 sidste.
         String sql = "INSERT INTO webhooks (" +
                 "name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES (" +
-                "?, ?, ?, ?, ?, 'POST', 'None', 'Tiger of Sweden');";
+                "?, ?, ?, ?, ?, 'POST', 'None', ?);";
         //template.update returns affected rows.
-        template.update(sql, webhook.getName(), webhook.getUrl(), webhook.getBody(), webhook.getRespOnSuccess(),webhook.getRespOnError());
+        template.update(sql, webhook.getName(), webhook.getUrl(), webhook.getBody(), webhook.getResponseOnSuccess(), webhook.getResponseOnError(), customername);
 
     }
 
