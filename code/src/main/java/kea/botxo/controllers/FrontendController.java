@@ -10,9 +10,12 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import kea.botxo.models.User;
 import kea.botxo.models.Customer;
 import kea.botxo.models.Webhook;
+import kea.botxo.models.User;
+import kea.botxo.models.AuthType;
+import kea.botxo.models.HttpRequestType;
+import kea.botxo.models.ApiKey;
 
 import kea.botxo.services.SeCustomer;
 import kea.botxo.services.SeWebhook;
