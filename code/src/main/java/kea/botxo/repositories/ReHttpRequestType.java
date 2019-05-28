@@ -16,7 +16,10 @@ public class ReHttpRequestType {
     JdbcTemplate template;
 
     public List<HttpRequestType> fetchAll() {
-      return new ArrayList<HttpRequestType>();
+
+      String sql = "SELECT * FROM http_request_types";
+      RowMapper<HttpRequestType> rowMapper = new BeanPropertyRowMapper<>(HttpRequestType.class);
+      return template.query(sql, rowMapper);
     }
 
     public boolean delete(HttpRequestType h) {

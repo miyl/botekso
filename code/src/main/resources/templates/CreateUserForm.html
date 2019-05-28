@@ -5,25 +5,27 @@
     <title>Login apge</title>
 </head>
 <body>
-<!-- Tilføj at password skal bræftes to gange.-->
-<form action="#" th:action="@{/CreateUserForm}" th:object="${user}" method="post">
-    <table>
-        <tr>
-            <td>Username:</td>
-            <td><input type="text" th:field="*{name}" /></td>
-            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Username Error</td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td><input type="password" th:field="*{password}" /></td>
-            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
-        </tr>
+    <div th:insert="fragments/topnav">Menu</div>
 
-        <tr>
-            <td><button type="submit">Submit</button></td>
-        </tr>
-    </table>
-</form>
+    <!-- Tilføj at password skal bræftes to gange.-->
+    <form action="#" th:action="@{/CreateUserForm}" th:object="${user}" method="post">
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" th:field="*{name}" /></td>
+                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Username Error</td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" th:field="*{password}" /></td>
+                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+            </tr>
+
+            <tr>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
 
 </body>
 </html>

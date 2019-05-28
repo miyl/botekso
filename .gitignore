@@ -47,3 +47,6 @@ hs_err_pid*
 
 # project specific
 **/application.properties
+
+# For class files, I think?
+code/out

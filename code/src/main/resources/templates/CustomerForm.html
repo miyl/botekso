@@ -5,28 +5,31 @@
     <title>Webhook Form</title>
 </head>
 <body>
-<form action="#" th:action="@{/CustomerForm}" th:object="${customer}" method="post">
-    <table>
-        <tr>
-            <td>Name:</td>
-            <td><input type="text" th:field="*{name}" /></td>
-            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td><input type="email" th:field="*{email}" /></td>
-            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
-        </tr>
-        <tr>
-            <td>Telephone:</td>
-            <td><input type="tel" th:field="*{tel}" /></td>
-            <td th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}">Telephone Error</td>
-        </tr>
-        <tr>
-            <td><button type="submit">Submit</button></td>
-        </tr>
-    </table>
-</form>
+
+    <div th:insert="fragments/topnav">Menu</div>
+
+    <form action="#" th:action="@{/CustomerForm}" th:object="${customer}" method="post">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}" /></td>
+                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" th:field="*{email}" /></td>
+                <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+            </tr>
+            <tr>
+                <td>Telephone:</td>
+                <td><input type="tel" th:field="*{tel}" /></td>
+                <td th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}">Telephone Error</td>
+            </tr>
+            <tr>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
 
 </body> 
 </html>

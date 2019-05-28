@@ -16,7 +16,9 @@ public class ReAuthType {
     JdbcTemplate template;
 
     public List<AuthType> fetchAll() {
-      return new ArrayList<AuthType>();
+        String sql = "SELECT * FROM auth_types";
+        RowMapper<AuthType> rowMapper = new BeanPropertyRowMapper<>(AuthType.class);
+        return template.query(sql, rowMapper);
     }
 
     public boolean delete(AuthType a) {

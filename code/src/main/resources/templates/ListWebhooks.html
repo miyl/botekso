@@ -6,15 +6,17 @@
 </head>
 <body>
 
-<p th:each="webhook : ${ListWebhooks}"}>
-    <span th:text="${webhook.name}"></span>
-    <span th:text="${webhook.url}"></span>
-    <span th:text="${webhook.body}"></span>
-    <span th:text="${webhook.responseOnSuccess}"></span>
-    <span th:text="${webhook.responseOnError}"></span>
-    <span><button>Update</button></span>
-    <span><button>Delete</button></span>
-</p>
+    <div th:insert="fragments/topnav">Menu</div>
+
+    <p th:each="webhook : ${ListWebhooks}"}>
+        <span th:text="${webhook.name}"></span>
+        <span th:text="${webhook.url}"></span>
+        <span th:text="${webhook.body}"></span>
+        <span th:text="${webhook.responseOnSuccess}"></span>
+        <span th:text="${webhook.responseOnError}"></span>
+        <span><button>Update</button></span>
+        <span><button>Delete</button></span>
+    </p>
 
 </body>
 </html>
