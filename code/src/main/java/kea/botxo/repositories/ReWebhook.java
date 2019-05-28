@@ -1,6 +1,8 @@
 package kea.botxo.repositories;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import kea.botxo.models.Webhook;
 import java.util.ArrayList;
@@ -27,7 +29,9 @@ public class ReWebhook {
 
     public List<Webhook> fetchAll(){
 
+
         //dummy data
+        /*
         Webhook webhook = new Webhook();
         webhook.setName("Nametest");
         webhook.setRespOnError(2);
@@ -45,7 +49,12 @@ public class ReWebhook {
         List<Webhook> webhooks = new ArrayList<>();
         webhooks.add(webhook);
         webhooks.add(webhook2);
-        return webhooks;
+        */
+
+        String sql = "SELECT * FROM webhooks";
+        RowMapper<Webhook> rowMapper = new BeanPropertyRowMapper<>(Webhook.class);
+
+        return template.query(sql, rowMapper);
     }
 
     public boolean update(Webhook webhook){
@@ -57,17 +66,15 @@ public class ReWebhook {
         return true;
     }
 
-    public boolean add(Webhook webhook){
+    public void add(Webhook webhook){
         //TODO: skal fixes som er hardcoded.
         //http_request_type
         //auth_type
         //customer
         //String sql = "INSERT INTO webhooks (name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES (?, ?, ?, ?, ?, 'POST', 'None', 'MyTESTCustomer')";
-        String sql = "INSERT INTO webhooks (name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES ('Test2', 'localhost:9999', '', 200, 403, 'POST', 'None', 'Tiger of Sweden');";
-
+        String sql = "INSERT INTO webhooks (?, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES ('Test2', 'localhost:9999', '', 200, 403, 'POST', 'None', 'Tiger of Sweden');";
         //template.update returns affected rows.
-        template.update(sql);
-        return true;
+        template.update(sql, webhook.getName());
 
     }
 

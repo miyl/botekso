@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -87,6 +86,11 @@ public class FrontendController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "WebhookForm";
         }
+        addWebhook(webhook);
+        return "redirect:/Results";
+    }
+
+    public String addWebhook(Webhook webhook){
         seWebhook.add(webhook);
         return "redirect:/Results";
     }

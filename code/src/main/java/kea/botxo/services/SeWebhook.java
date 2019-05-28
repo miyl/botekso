@@ -32,11 +32,8 @@ public class SeWebhook {
         }
         return false;
     }
-    public boolean add(Webhook webhook){
-        if(reWebhook.add(webhook)){
-            return true;
-        }
-        return false;
+    public void add(Webhook webhook){
+        reWebhook.add(webhook);
     }
 
 
