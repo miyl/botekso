@@ -62,13 +62,13 @@ public class ReWebhook {
         //http_request_type
         //auth_type
         //customer
-        String sql = "INSERT INTO webhooks (name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES (?, ?, ?, ?, ?, 'POST', 'None', 'MyTESTCustomer')";
+        //String sql = "INSERT INTO webhooks (name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES (?, ?, ?, ?, ?, 'POST', 'None', 'MyTESTCustomer')";
+        String sql = "INSERT INTO webhooks (name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES ('Test2', 'localhost:9999', '', 200, 403, 'POST', 'None', 'Tiger of Sweden');";
 
         //template.update returns affected rows.
-        if(1 == template.update(sql, webhook.getName(), webhook.getUrl(), webhook.getBody(), webhook.getRespOnSuccess(), webhook.getRespOnError())){
-            return true;
-        }
-        return false;
+        template.update(sql);
+        return true;
+
     }
 
 
