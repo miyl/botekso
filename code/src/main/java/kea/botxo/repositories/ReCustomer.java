@@ -13,7 +13,7 @@ public class ReCustomer {
     public Customer fetch(String name){
         //dummy data
         Customer customer = new Customer();
-        customer.setName("Hans Grethe");
+        customer.setName("HansGrethe");
         customer.setEmail("Jajaj@kds.dk");
         customer.setTel("23232323");
         return customer;
@@ -31,7 +31,7 @@ public class ReCustomer {
 
         Customer customer2 = new Customer();
         customer2.setTel("32323232");
-        customer2.setName("Bente Olsen");
+        customer2.setName("BenteOlsen");
         customer2.setEmail("Bente@hotmail.com");
 
         customerList.add(customer1);

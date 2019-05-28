@@ -67,14 +67,14 @@ public class ReWebhook {
         return true;
     }
 
-    public void add(Webhook webhook, String customername){
+    public void add(Webhook webhook){
         //TODO: skal fixes som er hardcoded.
         //de 3 sidste.
         String sql = "INSERT INTO webhooks (" +
                 "name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES (" +
                 "?, ?, ?, ?, ?, 'POST', 'None', ?);";
         //template.update returns affected rows.
-        template.update(sql, webhook.getName(), webhook.getUrl(), webhook.getBody(), webhook.getResponseOnSuccess(), webhook.getResponseOnError(), customername);
+        template.update(sql, webhook.getName(), webhook.getUrl(), webhook.getBody(), webhook.getResponseOnSuccess(), webhook.getResponseOnError(), webhook.getCustomer().getName());
 
     }
 

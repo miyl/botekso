@@ -32,8 +32,8 @@ public class SeWebhook {
         }
         return false;
     }
-    public void add(Webhook webhook, String customername){
-        reWebhook.add(webhook, customername);
+    public void add(Webhook webhook){
+        reWebhook.add(webhook);
     }
 
 

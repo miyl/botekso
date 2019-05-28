@@ -47,9 +47,9 @@
             <tr>
                 <td>Choose Customer:</td>
                 <td>
-                    <select name="customer">
+                    <select>
                         <p th:each="customer : ${customers}">
-                            <option th:text="${customer.name}"></option>
+                            <option th:value="customer" th:text="${customer.name}"></option>
                         </p>
                     </select>
                 </td>
