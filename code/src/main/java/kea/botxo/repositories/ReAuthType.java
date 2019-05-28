@@ -13,9 +13,11 @@ import java.util.List;
 @Repository
 public class ReAuthType {
 
+    @Autowired
     JdbcTemplate template;
 
     public List<AuthType> fetchAll() {
+
         String sql = "SELECT * FROM auth_types";
         RowMapper<AuthType> rowMapper = new BeanPropertyRowMapper<>(AuthType.class);
         return template.query(sql, rowMapper);

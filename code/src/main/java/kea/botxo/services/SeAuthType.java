@@ -15,7 +15,7 @@ public class SeAuthType {
     ReAuthType reAuthType;
 
     public List<AuthType> fetchAll() {
-      return new ArrayList<AuthType>();
+      return reAuthType.fetchAll();
     }
 
     public boolean delete(AuthType a) {

@@ -13,6 +13,7 @@ import java.util.List;
 @Repository
 public class ReHttpRequestType {
 
+    @Autowired
     JdbcTemplate template;
 
     public List<HttpRequestType> fetchAll() {

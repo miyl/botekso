@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>HTTP Request Types</title>
+</head>
+<body>
+
+    <div th:insert="fragments/topnav">Menu</div>
+
+    <p th:each="httpRequestType : ${HttpRequestTypes}"}>
+        <span th:text="${httpRequestType.httpRequestType}"></span>
+        <span><button>Update</button></span>
+        <span><button>Delete</button></span>
+    </p>
+
+</body>
+</html>

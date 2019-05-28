@@ -15,7 +15,7 @@ public class SeHttpRequestType {
     ReHttpRequestType reHttpRequestType;
 
     public List<HttpRequestType> fetchAll() {
-      return new ArrayList<HttpRequestType>();
+      return reHttpRequestType.fetchAll();
     }
 
     public boolean delete(HttpRequestType h) {

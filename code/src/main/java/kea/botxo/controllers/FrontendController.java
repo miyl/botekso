@@ -154,7 +154,7 @@ public class FrontendController implements WebMvcConfigurer {
     
     @GetMapping("/ListHttpRequestTypes")
     public String showListHttpRequestTypes(Model model){
-        model.addAttribute("ListHttpRequestTypes", seHttpRequestType.fetchAll());
+        model.addAttribute("HttpRequestTypes", seHttpRequestType.fetchAll());
         return "ListHttpRequestTypes";
     }
     
@@ -162,7 +162,7 @@ public class FrontendController implements WebMvcConfigurer {
     
     @GetMapping("/ListAuthTypes")
     public String showListAuthTypes(Model model){
-        model.addAttribute("ListAuthTypes", seAuthType.fetchAll());
+        model.addAttribute("AuthTypes", seAuthType.fetchAll());
         return "ListAuthTypes";
     }
 
