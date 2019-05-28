@@ -1,5 +1,6 @@
 package kea.botxo.repositories;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,6 +12,7 @@ import java.util.List;
 @Repository
 public class ReWebhook {
 
+    @Autowired
     JdbcTemplate template;
 
     public ReWebhook(){}
@@ -53,7 +55,6 @@ public class ReWebhook {
 
         String sql = "SELECT * FROM webhooks";
         RowMapper<Webhook> rowMapper = new BeanPropertyRowMapper<>(Webhook.class);
-
         return template.query(sql, rowMapper);
     }
 
@@ -68,13 +69,11 @@ public class ReWebhook {
 
     public void add(Webhook webhook){
         //TODO: skal fixes som er hardcoded.
-        //http_request_type
-        //auth_type
-        //customer
-        //String sql = "INSERT INTO webhooks (name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES (?, ?, ?, ?, ?, 'POST', 'None', 'MyTESTCustomer')";
-        String sql = "INSERT INTO webhooks (?, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES ('Test2', 'localhost:9999', '', 200, 403, 'POST', 'None', 'Tiger of Sweden');";
+        String sql = "INSERT INTO webhooks (" +
+                "name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES (" +
+                "?, ?, ?, ?, ?, 'POST', 'None', 'Tiger of Sweden');";
         //template.update returns affected rows.
-        template.update(sql, webhook.getName());
+        template.update(sql, webhook.getName(), webhook.getUrl(), webhook.getBody(), webhook.getRespOnSuccess(),webhook.getRespOnError());
 
     }
 
