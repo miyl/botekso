@@ -1,9 +1,9 @@
-package kea.botxo.Service;
+package kea.botxo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import kea.botxo.Model.Webhook;
-import kea.botxo.Repository.ReWebhook;
+import kea.botxo.models.Webhook;
+import kea.botxo.repositories.ReWebhook;
 
 import java.util.List;
 

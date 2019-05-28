@@ -1,4 +1,4 @@
-package kea.botxo.Repository;
+package kea.botxo.repositories;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,25 +6,25 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import kea.botxo.Model.HttpRequestType;
+import kea.botxo.models.AuthType;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ReHttpRequestType {
+public class ReAuthType {
 
     JdbcTemplate template;
 
-    public List<HttpRequestType> fetchAll() {
-      return new ArrayList<HttpRequestType>();
+    public List<AuthType> fetchAll() {
+      return new ArrayList<AuthType>();
     }
 
-    public boolean delete(HttpRequestType h) {
+    public boolean delete(AuthType a) {
       return true;
     }
 
-    public boolean add(HttpRequestType h) {
+    public boolean add(AuthType a) {
       return true;
     }
-  
+
 }

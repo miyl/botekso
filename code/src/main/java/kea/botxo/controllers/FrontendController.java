@@ -1,4 +1,4 @@
-package kea.botxo.Controller;
+package kea.botxo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,22 +10,22 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import kea.botxo.Model.User;
-import kea.botxo.Model.Customer;
-import kea.botxo.Model.Webhook;
+import kea.botxo.models.User;
+import kea.botxo.models.Customer;
+import kea.botxo.models.Webhook;
 
-import kea.botxo.Service.SeCustomer;
-import kea.botxo.Service.SeWebhook;
-import kea.botxo.Service.SeUser;
-import kea.botxo.Service.SeAuthType;
-import kea.botxo.Service.SeHttpRequestType;
-import kea.botxo.Service.SeApiKey;
+import kea.botxo.services.SeCustomer;
+import kea.botxo.services.SeWebhook;
+import kea.botxo.services.SeUser;
+import kea.botxo.services.SeAuthType;
+import kea.botxo.services.SeHttpRequestType;
+import kea.botxo.services.SeApiKey;
 
 import javax.validation.Valid;
 
 
 @Controller
-public class WebController implements WebMvcConfigurer {
+public class FrontendController implements WebMvcConfigurer {
 
     //Kode vedr. validering af form er fundet her https://spring.io/guides/gs/validating-form-input/
 

@@ -1,4 +1,4 @@
-package kea.botxo.Model;
+package kea.botxo.models;
 
 import javax.validation.constraints.*;
 

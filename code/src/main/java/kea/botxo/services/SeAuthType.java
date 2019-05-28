@@ -1,9 +1,9 @@
-package kea.botxo.Service;
+package kea.botxo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import kea.botxo.Model.AuthType;
-import kea.botxo.Repository.ReAuthType;
+import kea.botxo.models.AuthType;
+import kea.botxo.repositories.ReAuthType;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,18 +1,19 @@
-package kea.botxo.Service;
+package kea.botxo.repositories;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import kea.botxo.Model.HttpRequestType;
-import kea.botxo.Repository.ReHttpRequestType;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
+import kea.botxo.models.HttpRequestType;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class SeHttpRequestType {
+@Repository
+public class ReHttpRequestType {
 
-    @Autowired
-    ReHttpRequestType reHttpRequestType;
+    JdbcTemplate template;
 
     public List<HttpRequestType> fetchAll() {
       return new ArrayList<HttpRequestType>();

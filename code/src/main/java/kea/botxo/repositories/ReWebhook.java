@@ -1,8 +1,8 @@
-package kea.botxo.Repository;
+package kea.botxo.repositories;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import kea.botxo.Model.Webhook;
+import kea.botxo.models.Webhook;
 import java.util.ArrayList;
 import java.util.List;
 

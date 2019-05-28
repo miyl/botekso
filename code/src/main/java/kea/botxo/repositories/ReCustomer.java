@@ -1,7 +1,7 @@
-package kea.botxo.Repository;
+package kea.botxo.repositories;
 
 import org.springframework.stereotype.Repository;
-import kea.botxo.Model.Customer;
+import kea.botxo.models.Customer;
 import java.util.ArrayList;
 import java.util.List;
 
