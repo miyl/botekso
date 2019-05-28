@@ -101,6 +101,12 @@ public class FrontendController implements WebMvcConfigurer {
     }
 
     // CUSTOMER
+    //
+    @GetMapping("/ListCustomers")
+    public String showListCustomers(Model model){
+        model.addAttribute("Customers", seCustomer.fetchAll());
+        return "ListCustomers";
+    }
 
     //customer formular
     @GetMapping("/CustomerForm")

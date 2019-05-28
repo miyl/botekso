@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+</head>
+<body>
+
+    <div th:insert="fragments/topnav">Menu</div>
+
+    <p th:each="customer : ${Customers}"}>
+        <span th:text="${customer.name}"></span>
+        <span th:text="${customer.email}"></span>
+        <span th:text="${customer.tel}"></span>
+        <span><button>Update</button></span>
+        <span><button>Delete</button></span>
+    </p>
+
+</body>
+</html>
