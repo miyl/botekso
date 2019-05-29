@@ -8,6 +8,8 @@
 
     <div th:insert="fragments/topnav">Menu</div>
 
+    <a href="/CreateCustomer">Create</a>
+
     <p th:each="customer : ${Customers}"}>
         <span th:text="${customer.name}"></span>
         <span th:text="${customer.email}"></span>

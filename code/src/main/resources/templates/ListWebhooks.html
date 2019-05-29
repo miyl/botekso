@@ -8,6 +8,8 @@
 
     <div th:insert="fragments/topnav">Menu</div>
 
+    <a href="/CreateWebhook">Create</a>
+
     <p th:each="webhook : ${ListWebhooks}"}>
         <span th:text="${webhook.name}"></span>
         <span th:text="${webhook.url}"></span>

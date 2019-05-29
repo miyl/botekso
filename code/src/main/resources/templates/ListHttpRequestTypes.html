@@ -8,6 +8,8 @@
 
     <div th:insert="fragments/topnav">Menu</div>
 
+    <a href="/CreateHttpRequestType">Create</a>
+
     <p th:each="anHttpRequestType : ${HttpRequestTypes}"}>
         <span th:text="${anHttpRequestType.httpRequestType}"></span>
         <span><button>Update</button></span>
