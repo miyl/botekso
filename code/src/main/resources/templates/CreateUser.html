@@ -1,62 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
     <title>Create User</title>
 </head>
 <body>
 
-<<<<<<< HEAD
-    <!-- Mangler
-        - Hashing af kode
-        - 2 felter som kræver ens kode. Fejl hvis de ikke er det samme
-    -->
-
 <div th:insert="fragments/topnav">Menu</div>
-=======
-    <!-- Tilføj at password skal bræftes to gange.-->
-    <form action="#" th:action="@{/CreateUser}" th:object="${user}" method="post">
-        <table>
-            <tr>
-                <td>Username:</td>
-                <td><input type="text" th:field="*{name}" /></td>
-                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Username Error</td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><input type="password" th:field="*{password}" /></td>
-                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
-            </tr>
->>>>>>> eadb0de4f810f8be8d6812c0f8ed0477e0194206
 
+
+<!-- Tilføj at password skal bræftes to gange.-->
 <form action="#" th:action="@{/CreateUser}" th:object="${user}" method="post">
     <table>
         <tr>
             <td>Name:</td>
-            <td><input type="text" th:field="*{name}" /></td>
-            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+            <td><input type="text" placeholder="Click Here" th:field="*{name}" /></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Username Error</td>
         </tr>
         <tr>
-            <td>Password:</td>
-            <td><input type="password" th:field="*{password}" /></td>
+            <td>Password</td>
+            <td><input type="password" placeholder="Password" id="password" required></td>
+            <td><input type="password" placeholder="Confirm Password" id="confirm_password" required></td>
+
             <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+           <!--
+
+            <input type="password" placeholder="Confirm Password" id="confirm_password" required>
+            -->
         </tr>
         <tr>
-            <td>Access Level:
-                <select>
-                    <option value="Access Level 1"> Access Level 1</option>
-                    <option value="Access Level 2"> Access Level 2</option>
-                    <option value="Access Level 3"> Access Level 3</option>
-                </select>
+            <td>
+            <select>
+                <option>Access Level 1</option>
+                <option>Access Level 2</option>
+                <option>Access Level 3</option>
+            </select>
             </td>
         </tr>
-        <tr>
-            <td><button type="submit">Submit</button></td>
-        </tr>
+        <td><button type="submit">Submit</button></td>
     </table>
 </form>
 
