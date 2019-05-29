@@ -8,8 +8,6 @@
 
     <div th:insert="fragments/topnav">Menu</div>
 
-    <a href="/CreateWebhook">Create</a>
-
 <!--th:action= skal umiddelbartpege på den i Controlleren-->
 <!--th:object skal hedde det samme som det objekt der bliver oprettet i controllern.-->
     <form action="#" th:action="@{/CreateWebhook}" th:object="${webhook}" method="post">

@@ -10,12 +10,28 @@
 </head>
 <body>
 
+<<<<<<< HEAD
     <!-- Mangler
         - Hashing af kode
         - 2 felter som kræver ens kode. Fejl hvis de ikke er det samme
     -->
 
 <div th:insert="fragments/topnav">Menu</div>
+=======
+    <!-- Tilføj at password skal bræftes to gange.-->
+    <form action="#" th:action="@{/CreateUser}" th:object="${user}" method="post">
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" th:field="*{name}" /></td>
+                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Username Error</td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" th:field="*{password}" /></td>
+                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+            </tr>
+>>>>>>> eadb0de4f810f8be8d6812c0f8ed0477e0194206
 
 <form action="#" th:action="@{/CreateUser}" th:object="${user}" method="post">
     <table>

@@ -170,6 +170,4 @@ public class FrontendController implements WebMvcConfigurer {
         return "ListAuthTypes";
     }
 
-
-
 }

@@ -2,13 +2,11 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Webhook Form</title>
+    <title>Create Customer</title>
 </head>
 <body>
 
     <div th:insert="fragments/topnav">Menu</div>
-
-    <a href="/CreateCustomer">Create</a>
 
     <form action="#" th:action="@{/CreateCustomer}" th:object="${customer}" method="post">
         <table>
