@@ -7,8 +7,10 @@
 <body>
     <div th:insert="fragments/topnav">Menu</div>
 
+    <a href="/CreateUser">Create</a>
+
     <!-- Tilføj at password skal bræftes to gange.-->
-    <form action="#" th:action="@{/CreateUserForm}" th:object="${user}" method="post">
+    <form action="#" th:action="@{/CreateUser}" th:object="${user}" method="post">
         <table>
             <tr>
                 <td>Username:</td>

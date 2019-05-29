@@ -18,12 +18,11 @@ public class ReCustomer {
     JdbcTemplate template;
 
     public Customer fetch(String name){
-        //dummy data
-        Customer customer = new Customer();
-        customer.setName("HansGrethe");
-        customer.setEmail("Jajaj@kds.dk");
-        customer.setTel("23232323");
-        return customer;
+
+        String sql = "SELECT * FROM customers WHERE name=?";
+
+        RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
+        return template.queryForObject(sql, rowMapper, name);
     }
 
     public List<Customer> fetchAll(){

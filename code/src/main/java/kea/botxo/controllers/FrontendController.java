@@ -73,31 +73,31 @@ public class FrontendController implements WebMvcConfigurer {
     }
 
     // WEBHOOK
-
-    //Vis Webhook Formular
-    @GetMapping("/WebhookForm")
-    public String showWebhookForm(Webhook webhook, Model model){
-        //tilføjelse af customers til webhook formular.
-        model.addAttribute("customers", seCustomer.fetchAll());
-        return "WebhookForm";
-    }
-
-    //Post webhook
-    @PostMapping("/WebhookForm")
-    public String checkWebhookInfo(@Valid Webhook webhook, BindingResult bindingResult, Model model, WebRequest wr){
-        model.addAttribute("customers", seCustomer.fetchAll());
-        if(bindingResult.hasErrors()){
-            return "WebhookForm";
-        }
-        //String customername = wr.getParameter("customer");
-        seWebhook.add(webhook);
-        return "redirect:/Results";
-    }
-
+    //
     @GetMapping("/ListWebhooks")
     public String showListWebhooks(Model model){
         model.addAttribute("ListWebhooks", seWebhook.fetchAll());
         return "ListWebhooks";
+    }
+
+    //Vis Webhook Formular
+    @GetMapping("/CreateWebhook")
+    public String showWebhookForm(Webhook webhook, Model model){
+        //tilføjelse af customers til webhook formular.
+        model.addAttribute("customers", seCustomer.fetchAll());
+        return "CreateWebhook";
+    }
+
+    //Post webhook
+    @PostMapping("/CreateWebhook")
+    public String checkWebhookInfo(@Valid Webhook webhook, BindingResult bindingResult, Model model, WebRequest wr){
+        model.addAttribute("customers", seCustomer.fetchAll());
+        if(bindingResult.hasErrors()){
+            return "CreateWebhook";
+        }
+        //String customername = wr.getParameter("customer");
+        seWebhook.add(webhook);
+        return "redirect:/Results";
     }
 
     // CUSTOMER
@@ -109,15 +109,15 @@ public class FrontendController implements WebMvcConfigurer {
     }
 
     //customer formular
-    @GetMapping("/CustomerForm")
+    @GetMapping("/CreateCustomer")
     public String showCustomerForm(Customer customer){
-        return "CustomerForm";
+        return "CreateCustomer";
     }
 
-    @PostMapping("/CustomerForm")
+    @PostMapping("/CreateCustomer")
     public String checkCustomerInfo(@Valid Customer customer, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return "CustomerForm";
+            return "CreateCustomer";
         }
         return "redirect:/Results";
     }
@@ -132,15 +132,15 @@ public class FrontendController implements WebMvcConfigurer {
     }
 
     //vis create user formular
-    @GetMapping("/CreateUserForm")
+    @GetMapping("/CreateUser")
     public String showCreateUserForm(User user){
-        return "CreateUserForm";
+        return "CreateUser";
     }
 
-    @PostMapping("/CreateUserResults")
+    @PostMapping("/CreateUser")
     public String checkUserInfo(@Valid User user, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return "CreateUserForm";
+            return "CreateUser";
         }
         return "redirect:/Results";
     }

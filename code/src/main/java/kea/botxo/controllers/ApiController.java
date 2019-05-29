@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.context.request.WebRequest;
 
 import kea.botxo.services.SeWebhook;
+import kea.botxo.services.SeApiKey;
 
 import kea.botxo.models.Webhook;
 
@@ -23,6 +24,9 @@ public class ApiController {
 
   @Autowired
   SeWebhook seWebhook;
+
+  @Autowired
+  SeApiKey seApiKey;
 
   @GetMapping("/list")
   public List<Webhook> list() {
@@ -38,6 +42,10 @@ public class ApiController {
     // Find the webhook's customer
     // Customer c = w.getCustomer();
     // Compare all api keys that customer has to the api key provided in the request
+    //List<ApiKey> keys = seApiKey.getKeysForCustomer(c);
+    // for (ApiKey k : keys) {
+    
+    //}
 
     // 3. Execute the webhook
 
