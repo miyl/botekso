@@ -10,6 +10,7 @@
     <!-- Fragment af top-navigation.-->
 <div th:insert="fragments/topnav">Menu</div>
 
+    <a href="/CreateUser"><button>Add User</button></a>
 
 <div th:each="user : ${Users}"}>
     <span th:text="${user.name}"></span>

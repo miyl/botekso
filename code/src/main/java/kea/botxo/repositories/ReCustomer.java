@@ -56,7 +56,16 @@ public class ReCustomer {
     }
 
     public boolean delete(String name) {
-        return true;
+        String sql = "DELETE FROM customers WHERE name=?";
+        int result = template.update(sql, name);
+
+        if(result == 0) {
+            return false;
+        }
+
+        else {
+            return true;
+        }
     }
 
     public boolean add(Customer customer){

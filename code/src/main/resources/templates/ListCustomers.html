@@ -10,13 +10,16 @@
 
     <a href="/CreateCustomer"><button>Add Customer</button></a>
 
-    <p th:each="customer : ${Customers}"}>
+    <div th:each="customer : ${Customers}"}>
         <span th:text="${customer.name}"></span>
         <span th:text="${customer.email}"></span>
         <span th:text="${customer.tel}"></span>
         <span><button>Update</button></span>
-        <span><button>Delete</button></span>
-    </p>
+        <form style="display: inline;" action="/DeleteCustomer" method='post'>
+            <input type="hidden" th:value="${customer.name}" name="name"/>
+            <input type="submit" value="Delete"/>
+        </form>>
+    </div>
 
 </body>
 </html>
