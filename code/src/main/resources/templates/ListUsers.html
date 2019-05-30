@@ -16,7 +16,7 @@
     <span th:text="${user.password}"></span>
     <button>Update</button>
     <form style="display: inline;" action="/DeleteUser" method='post'>
-        <input type="hidden" value="${user.name}" name="name"/>
+        <input type="hidden" th:value="${user.name}" name="name"/>
         <input type="submit" value="Delete"/>
     </form>
 
