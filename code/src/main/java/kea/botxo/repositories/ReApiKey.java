@@ -35,9 +35,9 @@ public class ReApiKey {
         StringBuilder newApiKey = new StringBuilder();
         Random ran = new Random();
         for (int i = 0; i < 100; i++) {
-            newApiKey.append(possibleCharacters[ran.nextInt(99)+1]);
+            newApiKey.append(possibleCharacters[ran.nextInt(possibleCharacters.length)]);
         }
-        String sql = "INSERT INTO api_keys (key customer) VALUES (?, ?)";
+        String sql = "INSERT INTO api_keys (key, customer) VALUES (?, ?)";
         template.update(sql, newApiKey, customerName);
     }
 
