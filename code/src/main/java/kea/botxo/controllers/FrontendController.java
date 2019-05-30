@@ -75,7 +75,7 @@ public class FrontendController implements WebMvcConfigurer {
     }
 
     // WEBHOOK
-    //
+    
     @GetMapping("/ListWebhooks")
     public String showListWebhooks(Model model){
         model.addAttribute("ListWebhooks", seWebhook.fetchAll());
@@ -103,7 +103,7 @@ public class FrontendController implements WebMvcConfigurer {
     }
 
     // CUSTOMER
-    //
+    
     @GetMapping("/ListCustomers")
     public String showListCustomers(Model model){
         model.addAttribute("Customers", seCustomer.fetchAll());
