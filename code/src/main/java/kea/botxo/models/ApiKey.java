@@ -27,5 +27,5 @@ public class ApiKey {
     public void setCustomer(Customer customer) {
       this.customer = customer;
     }
-  
+
 }
