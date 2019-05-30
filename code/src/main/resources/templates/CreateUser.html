@@ -18,15 +18,10 @@
             <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Username Error</td>
         </tr>
         <tr>
-            <td>Password</td>
+            <td>Password:</td>
             <td><input type="password" placeholder="Password" id="password" required></td>
             <td><input type="password" placeholder="Confirm Password" id="confirm_password" required></td>
-
             <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
-           <!--
-
-            <input type="password" placeholder="Confirm Password" id="confirm_password" required>
-            -->
         </tr>
         <tr>
             <td>
@@ -37,7 +32,7 @@
             </select>
             </td>
         </tr>
-        <td><button type="submit">Submit</button></td>
+        <td><button type="submit" >Submit</button></td>
     </table>
 </form>
 

@@ -30,8 +30,8 @@ public class SeUser {
         reUser.update(user);
     }
 
-    public void delete(User user) {
-        reUser.delete(user);
+    public void delete(String name) {
+        reUser.delete(name);
     }
 
     public boolean validateLogin(String name, String password){

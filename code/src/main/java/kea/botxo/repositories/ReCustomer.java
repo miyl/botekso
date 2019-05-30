@@ -36,7 +36,7 @@ public class ReCustomer {
         //List<Customer> customerList = new ArrayList<>();
 
         //Customer customer1 = new Customer();
-        //customer1.setEmail("hans@gmail.dk");
+        //customer1.setEmail(   "hans@gmail.dk");
         //customer1.setName("Hans jensen");
         //customer1.setTel("23232323");
 

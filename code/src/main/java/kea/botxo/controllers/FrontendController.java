@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -125,11 +127,18 @@ public class FrontendController implements WebMvcConfigurer {
     // USER
 
     @GetMapping("/ListUsers")
-    public String showListUsers(Model model){
-        // Udkommenteret indtil metoden er lavet
-        // model.addAttribute("ListApiKeys", seApiKey.fetchAll());
+    public String showListUsers(Model model) {
+        model.addAttribute("Users", seUser.fetchAll());
         return "ListUsers";
+
     }
+
+    @PostMapping("/DeleteUser")
+    public String deleteUser (@RequestParam("name") String name){
+        seUser.delete(name);
+        return "redirect:/ListUser";
+    }
+
 
     //vis create user formular
     @GetMapping("/CreateUser")
@@ -142,7 +151,7 @@ public class FrontendController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "CreateUser";
         }
-        return "redirect:/Results";
+        return "redirect:/ListUsers";
     }
 
     // API-KEY

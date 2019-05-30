@@ -10,7 +10,7 @@
     <!-- Fragment af top-navigation.-->
 <div th:insert="fragments/topnav">Menu</div>
 
-    <div class="container">
+
 <p th:each="user : ${Users}"}>
     <span th:text="${user.name}"></span>
     <span th:text="${user.password}"></span>

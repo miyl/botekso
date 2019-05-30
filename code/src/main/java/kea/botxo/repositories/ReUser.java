@@ -35,11 +35,22 @@ public class ReUser {
     }
 
     public boolean update(User user) {
+        //String sql = "INSERT INTO users WHERE name=?";
+        //int updateResult = template.update(sql, name,)
         return true;
     }
 
-    public boolean delete(User user) {
-        return true;
+    public boolean delete(String name) {
+        String sql = "DELETE FROM users WHERE name=?";
+        int result = template.update(sql,name);
+
+        if(result == 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+
     }
 
     public boolean add(User user) {
