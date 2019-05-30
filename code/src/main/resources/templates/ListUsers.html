@@ -15,7 +15,13 @@
     <span th:text="${user.name}"></span>
     <span th:text="${user.password}"></span>
     <span><button>Update</button></span>
-    <span><button>Delete</button></span>
+    <span>
+    <form style="display: inline;" action="/DeleteUser">
+        <input type="hidden" value="${user.name}" name="name"/>
+        <input type="submit" value="Delete"/>
+    </form>
+    </span>
+
 </p>
     </div>
 
