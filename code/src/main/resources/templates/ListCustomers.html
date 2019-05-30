@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <!--/*/ <th:block th:include="fragments/head.html"> </th:block> /*/-->
     <title>Customers</title>
 </head>
 <body>
@@ -10,16 +10,13 @@
 
     <a href="/CreateCustomer"><button>Add Customer</button></a>
 
-    <div th:each="customer : ${Customers}"}>
+    <p th:each="customer : ${Customers}"}>
         <span th:text="${customer.name}"></span>
         <span th:text="${customer.email}"></span>
         <span th:text="${customer.tel}"></span>
         <span><button>Update</button></span>
-        <form style="display: inline;" action="/DeleteCustomer" method='post'>
-            <input type="hidden" th:value="${customer.name}" name="name"/>
-            <input type="submit" value="Delete"/>
-        </form>>
-    </div>
+        <span><button>Delete</button></span>
+    </p>
 
 </body>
 </html>

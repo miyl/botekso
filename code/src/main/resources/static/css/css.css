@@ -1,0 +1,23 @@
+body {
+  background: #efe;
+}
+
+/* Topnav */
+
+.topnav a {
+  margin-left: 15px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.topnav a:visited {
+  color: black;
+}
+
+.topnav a:link {
+  color: black;
+}
+
+.topnav a:hover {
+  text-decoration: underline;
+}
