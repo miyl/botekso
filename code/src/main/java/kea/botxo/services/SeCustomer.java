@@ -18,4 +18,8 @@ public class SeCustomer {
     public List<Customer> fetchAll(){
         return reCustomer.fetchAll();
     }
+
+    public Customer fetch(String name) {
+      return reCustomer.fetch(name);
+    }
 }
