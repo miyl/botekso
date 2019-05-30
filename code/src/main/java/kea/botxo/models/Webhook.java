@@ -17,6 +17,9 @@ public class Webhook {
      * */
 
     @NotNull
+    private int id;
+
+    @NotNull
     @Size(min=1, max=100)
     @Pattern(regexp="^[A-Za-z 0-9]*$")
     private String name;
@@ -45,7 +48,28 @@ public class Webhook {
     private int responseOnError;
 
     // TODO: It should probably have an HttpRequestType and AuthType as well, corresponding to its foreign keys?
-    private Customer customer;
+    // private Customer customer;
+    private String customerName;
+
+    public Webhook(){}
+
+    // public Webhook(int id, String name, String url, String body, int responseOnSuccess, int responseOnError, Customer customer) {
+    //   this.id = id;
+    //   this.name = name; 
+    //   this.url = url;
+    //   this.body = body;
+    //   this.responseOnSuccess = responseOnSuccess;
+    //   this.responseOnError = responseOnError;
+    //   this.customer = customer;
+    // }
+
+    public int getId() {
+      return id;
+    }
+
+    public void setId(int id) {
+      this.id = id;
+    }
 
 
     public String getName() {
@@ -88,11 +112,19 @@ public class Webhook {
         this.responseOnError = responseOnError;
     }
 
-    public Customer getCustomer() {
-      return customer;
+    // public Customer getCustomer() {
+    //   return customer;
+    // }
+
+    // public void setCustomer(Customer customer) {
+    //   this.customer = customer;
+    // }
+
+    public String getCustomerName() {
+      return customerName;
     }
 
-    public void setCustomer(Customer customer) {
-      this.customer = customer;
+    public void setCustomerName(String customerName) {
+      this.customerName = customerName;
     }
 }

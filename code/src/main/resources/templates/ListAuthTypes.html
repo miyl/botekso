@@ -8,7 +8,7 @@
 
     <div th:insert="fragments/topnav">Menu</div>
 
-    <a href="/CreateAuthType">Create</a>
+    <a href="/CreateAuthType"><button>Add Auth Type</button></a>
 
     <p th:each="anAuthType : ${AuthTypes}"}>
         <span th:text="${anAuthType.authType}"></span>
