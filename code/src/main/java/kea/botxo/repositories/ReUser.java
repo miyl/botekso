@@ -2,40 +2,36 @@ package kea.botxo.repositories;
 
 import org.springframework.stereotype.Repository;
 import kea.botxo.models.User;
-import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
 
 @Repository
 public class ReUser {
 
+    @Autowired
+    JdbcTemplate template;
+
     public ReUser() {}
 
+    //Metode som vælger alle 'name' i tabellet.
     public User fetch(String name) {
 
-        //dummy data
-        User user = new User();
-        user.setName("Hans");
-        user.setPassword("hejhej");
-
-        return user;
+        String sql = "SELECT * FROM users WHERE name=?";
+        RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
+        return template.queryForObject(sql, rowMapper, name);
     }
-
     public List<User> fetchAll() {
-        List<User> userList = new ArrayList<>();
 
-        //dummy data
-        User user = new User();
-        user.setName("Hans");
-        user.setPassword("hejhej");
-
-        User user2 = new User();
-        user.setName("Grethe");
-        user.setPassword("hejhej");
-
-        userList.add(user);
-        userList.add(user2);
-
-        return userList;
+        //Query som vælger alt fra tabellen 'frontend_users'
+        String sql = "SELECT * FROM frontend_users";
+        //Rækker i SQL-queryen til liste af User
+        RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
+        //Kører SQL-query
+        return template.query(sql, rowMapper);
     }
 
     public boolean update(User user) {

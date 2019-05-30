@@ -2,30 +2,44 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Login page</title>
+    <title>Create User</title>
 </head>
 <body>
-    <div th:insert="fragments/topnav">Menu</div>
 
-    <!-- Tilføj at password skal bræftes to gange.-->
-    <form action="#" th:action="@{/CreateUser}" th:object="${user}" method="post">
-        <table>
-            <tr>
-                <td>Username:</td>
-                <td><input type="text" th:field="*{name}" /></td>
-                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Username Error</td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><input type="password" th:field="*{password}" /></td>
-                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
-            </tr>
+<div th:insert="fragments/topnav">Menu</div>
 
-            <tr>
-                <td><button type="submit">Submit</button></td>
-            </tr>
-        </table>
-    </form>
+
+<!-- Tilføj at password skal bræftes to gange.-->
+<form action="#" th:action="@{/CreateUser}" th:object="${user}" method="post">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" placeholder="Click Here" th:field="*{name}" /></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Username Error</td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" placeholder="Password" id="password" required></td>
+            <td><input type="password" placeholder="Confirm Password" id="confirm_password" required></td>
+
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+           <!--
+
+            <input type="password" placeholder="Confirm Password" id="confirm_password" required>
+            -->
+        </tr>
+        <tr>
+            <td>
+            <select>
+                <option>Access Level 1</option>
+                <option>Access Level 2</option>
+                <option>Access Level 3</option>
+            </select>
+            </td>
+        </tr>
+        <td><button type="submit">Submit</button></td>
+    </table>
+</form>
 
 </body>
 </html>
