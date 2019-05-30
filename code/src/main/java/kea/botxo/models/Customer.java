@@ -19,6 +19,12 @@ public class Customer {
     @Pattern(regexp="^[0-9]*$")
     private String tel;
 
+    public Customer(String name, String email, String tel) {
+      this.name = name;
+      this.email = email;
+      this.tel = tel;
+    }
+
     public String getName() {
         return name;
     }
