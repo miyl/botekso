@@ -20,7 +20,7 @@ public class ReUser {
     //Metode som vælger alle 'name' i tabellet.
     public User fetch(String name) {
 
-        String sql = "SELECT * FROM users WHERE name=?";
+        String sql = "SELECT * FROM frontend_users WHERE name=?";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
         return template.queryForObject(sql, rowMapper, name);
     }
@@ -41,8 +41,8 @@ public class ReUser {
     }
 
     public boolean delete(String name) {
-        String sql = "DELETE FROM users WHERE name=?";
-        int result = template.update(sql,name);
+        String sql = "DELETE FROM frontend_users WHERE name=?";
+        int result = template.update(sql, name);
 
         if(result == 0) {
             return false;

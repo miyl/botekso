@@ -11,19 +11,16 @@
 <div th:insert="fragments/topnav">Menu</div>
 
 
-<p th:each="user : ${Users}"}>
+<div th:each="user : ${Users}"}>
     <span th:text="${user.name}"></span>
     <span th:text="${user.password}"></span>
-    <span><button>Update</button></span>
-    <span>
-    <form style="display: inline;" action="/DeleteUser">
+    <button>Update</button>
+    <form style="display: inline;" action="/DeleteUser" method='post'>
         <input type="hidden" value="${user.name}" name="name"/>
         <input type="submit" value="Delete"/>
     </form>
-    </span>
 
-</p>
-    </div>
+</div>
 
 </body>
 </html>
