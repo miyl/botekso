@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8">
+    <title>List ApiKeys</title>
+</head>
+<body>
+
+    <!-- Fragment af top-navigation.-->
+<div th:insert="fragments/topnav">Menu</div>
+
+    <a href="/CreateUser"><button>Add User</button></a>
+
+<div th:each="user : ${Users}"}>
+    <span th:text="${user.name}"></span>
+    <span th:text="${user.password}"></span>
+    <button>Update</button>
+    <form style="display: inline;" action="/DeleteUser" method='post'>
+        <input type="hidden" th:value="${user.name}" name="name"/>
+        <input type="submit" value="Delete"/>
+    </form>
+
+</div>
+
+</body>
+</html>

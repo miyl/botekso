@@ -28,7 +28,7 @@ public class ReApiKey {
         return template.query(sql, rowMapper);
     }
 
-    public void generate(String customerName) {
+    public boolean generate(String customerName) {
         char[] possibleCharacters = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','y','z',
                                         'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Y','Z',
                                         '0','1','2','3','4','5','6','7','8','9'};
@@ -38,12 +38,12 @@ public class ReApiKey {
             newApiKey.append(possibleCharacters[ran.nextInt(possibleCharacters.length)]);
         }
         String sql = "INSERT INTO api_keys (key, customer) VALUES (?, ?)";
-        template.update(sql, newApiKey, customerName);
+        return (template.update(sql, newApiKey, customerName) != 0);
     }
 
-    public void delete(String key) {
+    public boolean delete(String key) {
         String sql = "DELETE FROM api_key WHERE key = ?";
-        template.update(sql, key);
+        return (template.update(sql, key) != 0);
     }
 
     public ApiKey fetch(String key) {
