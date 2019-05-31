@@ -1,27 +1,63 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
+    <!-- Required meta tags -->
+
     <!--/*/ <th:block th:include="fragments/head.html"> </th:block> /*/-->
-    <title>Users</title>
+    <title>User List</title>
 </head>
+
 <body class='list'>
 
-    <!-- Fragment af top-navigation.-->
+<!-- Fragment af top-navigation.-->
 <div th:insert="fragments/topnav">Menu</div>
 
-    <a href="/CreateUser"><button>Add User</button></a>
+<a href="/CreateUser"><button>Add User</button></a>
 
-<div th:each="user : ${users}"}>
-    <span th:text="${user.name}"></span>
-    <span th:text="${user.password}"></span>
+<div class="container">
 
-    <button>Update</button>
-    <form action="/DeleteUser" method='POST'>
-        <input type="hidden" th:value="${user.name}" name="name"/>
-        <input type="submit" value="Delete"/>
-    </form>
+    <h3>User List</h3>
+    <hr>
 
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead bg-dark">
+        <tr>
+            <th class="text-white">Name         </th>
+            <th class="text-white">Access Level  </th>
+            <th class="text-white">Edit         </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <!-- tempEmployee = Loop parameter-->
+        <!--                  : = Loops over list of employees-->
+        <!--                      employees comes from our Java code-->
+        <tr th:each="user : ${users}">
+            <td th:text="${user.name}"            />
+            <td th:text="${user.accessLevel}">    />
+            <td>
+
+            <form action="/UpdateeUser" method='POST'>
+                <input type="hidden" th:value="${user.name}" name="name"/>
+                <input type="submit" value="Update"/>
+            </form>
+
+            <form action="/DeleteUser" method='POST'>
+                <input type="hidden" th:value="${user.name}" name="name"/>
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+
+
+
+        </tr>
+        </tbody>
+    </table>
 </div>
+
+<hr>
 
 </body>
 </html>

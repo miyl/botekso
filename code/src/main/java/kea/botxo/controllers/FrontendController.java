@@ -135,7 +135,7 @@ public class FrontendController implements WebMvcConfigurer {
 
     @PostMapping("/DeleteCustomer")
     public String deleteCustomer (@RequestParam("name") String name) {
-        seUser.delete(name);
+        seCustomer.delete(name);
         return "redirect:/ListCustomers";
     }
 
