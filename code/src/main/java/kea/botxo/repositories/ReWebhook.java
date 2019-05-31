@@ -65,7 +65,7 @@ public class ReWebhook {
         webhooks.add(webhook2);
         */
 
-        String sql = "SELECT name FROM webhooks";
+        String sql = "SELECT * FROM webhooks";
         RowMapper<Webhook> rowMapper = new BeanPropertyRowMapper<>(Webhook.class);
         return template.query(sql, rowMapper);
 
@@ -91,17 +91,19 @@ public class ReWebhook {
     }
 
     public boolean delete(int id){
-        return true;
+        String sql = "DELETE FROM webhooks WHERE id=?";
+        return ( template.update(sql, id) != 0 );
     }
 
-    public void add(Webhook webhook){
+    public boolean add(Webhook webhook){
         //TODO: skal fixes som er hardcoded.
         //de 3 sidste.
         String sql = "INSERT INTO webhooks (" +
                 "name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES (" +
                 "?, ?, ?, ?, ?, 'POST', 'None', 'Tiger of Sweden');";
         //template.update returns affected rows.
-        template.update(sql, webhook.getName(), webhook.getUrl(), webhook.getBody(), webhook.getResponseOnSuccess(), webhook.getResponseOnError());
+        int res = template.update(sql, webhook.getName(), webhook.getUrl(), webhook.getBody(), webhook.getResponseOnSuccess(), webhook.getResponseOnError());
+        return (res != 0)? true : false;
 
     }
 

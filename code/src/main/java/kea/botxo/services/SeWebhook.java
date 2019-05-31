@@ -27,13 +27,11 @@ public class SeWebhook {
         return false;
     }
     public boolean delete(int id){
-        if(reWebhook.delete(id)){
-            return true;
-        }
-        return false;
+        return reWebhook.delete(id);
     }
-    public void add(Webhook webhook){
-        reWebhook.add(webhook);
+
+    public boolean add(Webhook webhook){
+        return reWebhook.add(webhook);
     }
 
 

@@ -53,6 +53,7 @@ public class FrontendController implements WebMvcConfigurer {
         registry.addViewController("/LoginSuccess").setViewName("LoginSuccess");
     }
 
+
     // LOGIN
 
     //Se her https://spring.io/guides/gs/securing-web/
@@ -73,6 +74,7 @@ public class FrontendController implements WebMvcConfigurer {
         return "errorpage";
 
     }
+
 
     // WEBHOOK
     
@@ -108,6 +110,7 @@ public class FrontendController implements WebMvcConfigurer {
         return "redirect:/ListWebhooks";
     }
 
+
     // CUSTOMER
     
     @GetMapping("/ListCustomers")
@@ -135,6 +138,7 @@ public class FrontendController implements WebMvcConfigurer {
         seUser.delete(name);
         return "redirect:/ListCustomers";
     }
+
 
     // USER
 
@@ -165,6 +169,7 @@ public class FrontendController implements WebMvcConfigurer {
         return "redirect:/ListUsers";
     }
 
+
     // API-KEY
     
     @GetMapping("/ListApiKeys")
@@ -192,6 +197,7 @@ public class FrontendController implements WebMvcConfigurer {
         return "redirect:/ListApiKeys";
     }
     
+
     // HTTP REQUEST TYPES
     
     @GetMapping("/ListHttpRequestTypes")
@@ -206,6 +212,7 @@ public class FrontendController implements WebMvcConfigurer {
         return "redirect:/ListHttpRequestTypes";
     }
     
+
     // AUTH TYPES
     
     @GetMapping("/ListAuthTypes")
