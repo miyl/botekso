@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.4.RELEASE</version>
+		<version>2.1.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>kea</groupId>
-	<artifactId>botxo</artifactId>
+	<groupId>kea.botxo</groupId>
+	<artifactId>testserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>botxo</name>
-	<description>botxo project</description>
+	<name>testserver</name>
+	<description>botxo testserver</description>
 
 	<properties>
 		<java.version>12</java.version>
@@ -23,7 +23,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -33,22 +32,9 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
+			<optional>true</optional>
 		</dependency>
-		
-	        <dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		    <scope>runtime</scope>
-	        </dependency>
-
-	        <!-- For JDBC template -->
-	        <dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-jdbc</artifactId>
-	        </dependency>
-
 	</dependencies>
-
 
 	<build>
 		<plugins>

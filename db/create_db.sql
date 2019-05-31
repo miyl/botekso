@@ -42,15 +42,27 @@ CREATE TABLE webhooks (
   http_request_type VARCHAR(30) NOT NULL, -- TINYINT or FOREIGN KEY to table of types?
   auth_type VARCHAR(30) NOT NULL,   -- TINYINT or FOREIGN KEY to table of authentication methods?
   customer VARCHAR(60) NOT NULL,
-  FOREIGN KEY (customer) REFERENCES customers(name),
-  FOREIGN KEY (http_request_type) REFERENCES http_request_types(http_request_type),
-  FOREIGN KEY (auth_type) REFERENCES auth_types(auth_type)
+  FOREIGN KEY (customer) 
+    REFERENCES customers(name)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY (http_request_type) 
+    REFERENCES http_request_types(http_request_type)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY (auth_type) 
+    REFERENCES auth_types(auth_type) 
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 CREATE TABLE api_keys (
   `key` VARCHAR(100) PRIMARY KEY,
 
   customer VARCHAR(60) NOT NULL,
-  FOREIGN KEY (customer) REFERENCES customers(name),
+  FOREIGN KEY (customer) 
+    REFERENCES customers(name)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CHECK ( char_length(`key`) = 100 )
 );

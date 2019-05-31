@@ -57,7 +57,7 @@ public class ApiController {
     for (ApiKey k : keys) {
       if ( k.equals(key) ) { 
         authenticated = true;
-        break;
+        break; // No need to check additional API keys when the valid one is found
       }
     }
 

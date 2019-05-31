@@ -68,6 +68,9 @@ VALUES ('Tiger of Sweden', 'tiger@sweden.dk', '4670121416');
 INSERT INTO customers (name, email, tel) 
 VALUES ('Carlsberg', 'carl@carlsberg.dk', '4588888888');
 
+INSERT INTO customers (name, email, tel) 
+VALUES ('tariq', 'tariq@zamanien.dk', '4577777777');
+
 
 -- Omitting special characters
 
