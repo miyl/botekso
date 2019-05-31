@@ -1,28 +1,92 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
+    <!-- Required meta tags -->
+
     <!--/*/ <th:block th:include="fragments/head.html"> </th:block> /*/-->
-    <title>Webhooks</title>
+    <title>Webhook List</title>
 </head>
+
 <body class='list'>
 
     <div th:insert="fragments/topnav">Menu</div>
-
     <a href="/CreateWebhook"><button>Add Webhook</button></a>
 
-    <div th:each="webhook : ${webhooks}">
-        <span th:text="${webhook.name}"></span>
-        <span th:text="${webhook.url}"></span>
-        <span th:text="${webhook.body}"></span>
-        <span th:text="${webhook.responseOnSuccess}"></span>
-        <span th:text="${webhook.responseOnError}"></span>
+    <h3>Webhook List</h3>
+    <hr>
 
-        <button>Update</button>
-        <form action="/DeleteWebhook" method='POST'>
-            <input type="hidden" th:value="${webhook.id}" name="id"/>
-            <input type="submit" value="Delete"/>
-        </form>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead bg-dark">
+        <tr>
+            <th class="text-white">ID                   </th>
+            <th class="text-white">Webhook Name         </th>
+            <th class="text-white">Customer             </th>
+            <th class="text-white">URL                  </th>
+            <th class="text-white">Body                 </th>
+            <th class="text-white">Response On Success  </th>
+            <th class="text-white">Response On Error    </th>
+            <!-- Tilføjes når disse er skabt i Webhooks
+            <th class="text-white">Auth-Type            </th>
+            <th class="text-white">HTTP-Request Type    </th>
+            -->
+            <th class="text-white">Edit                 </th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <!-- tempEmployee = Loop parameter-->
+        <!--                  : = Loops over list of employees-->
+        <!--                      employees comes from our Java code-->
+        <tr th:each="webhook : ${webhooks}">
+            <td th:text="${webhook.id}"> />
+            <td th:text="${webhook.name}"             />
+            <td th:text="${webhook.customerName}"     />
+            <td th:text="${webhook.url}">             />
+            <td th:text="${webhook.body}">            />
+            <td th:text="${webhook.responseOnSuccess}"/>
+            <td th:text="${webhook.responseOnError}"> />
+            <!- TIlføjes når disse er skabt i ReWebhook og SeWebhook
+            <td th:text="${webhook.c}"         />
+            <td th:text="${webhook.httpRequestType}"  />
+            -->
+            <td>
+                <form action="/UpdateCustomer" method='POST'>
+                    <input type="hidden" th:value="${webhook.id}" name="name"/>
+                    <input type="submit" value="Update"/>
+                </form>
+
+                <form action="/DeleteCustomer" method='POST'>
+                    <input type="hidden" th:value="${webhook.id}" name="name"/>
+                    <input type="submit" value="Delete" onclick="getConfirmation()" />
+                </form>
+
+            </td>
+
+            <!--
+            <script type = "text/javascript">
+
+                function getConfirmation() {
+                    var warning = confirm("By accepting, you will delete the Customer with its related API-key(s) and HTTP-Requst type(s)");
+
+                    if(warning == true) {
+
+                    }
+                    else {
+                        warning == false;
+                    }
+                }
+            </script>
+            -->
+
+
+        </tr>
+        </tbody>
+    </table>
     </div>
+
 
 </body>
 </html>
