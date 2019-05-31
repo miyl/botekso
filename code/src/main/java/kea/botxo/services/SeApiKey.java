@@ -21,12 +21,12 @@ public class SeApiKey {
     return reapikey.fetchAll();
   }
 
-  public void generate(String customerName) {
-    reapikey.generate(customerName);
+  public boolean generate(String customerName) {
+    return reapikey.generate(customerName);
   }
 
-  public void delete(String key) {
-    reapikey.delete(key);
+  public boolean delete(String key) {
+    return reapikey.delete(key);
   }
 
   public ApiKey fetch(String key) {
