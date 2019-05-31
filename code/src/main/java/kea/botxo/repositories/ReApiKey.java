@@ -17,7 +17,7 @@ public class ReApiKey {
     JdbcTemplate template;
 
     public List<ApiKey> fetchAllForCustomer(String customerName) {
-        String sql = "SELECT * FROM api_keys WHERE customer = ?";
+        String sql = "SELECT * FROM api_keys WHERE customer_name = ?";
         RowMapper<ApiKey> rowMapper = new BeanPropertyRowMapper<>(ApiKey.class);
         return template.query(sql, rowMapper, customerName);
     }
@@ -37,7 +37,7 @@ public class ReApiKey {
         for (int i = 0; i < 100; i++) {
             newApiKey.append(possibleCharacters[ran.nextInt(possibleCharacters.length)]);
         }
-        String sql = "INSERT INTO api_keys (key, customer) VALUES (?, ?)";
+        String sql = "INSERT INTO api_keys (key, customer_name) VALUES (?, ?)";
         return (template.update(sql, newApiKey, customerName) != 0);
     }
 
