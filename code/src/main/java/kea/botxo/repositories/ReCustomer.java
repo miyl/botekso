@@ -62,7 +62,6 @@ public class ReCustomer {
         if(result == 0) {
             return false;
         }
-
         else {
             return true;
         }

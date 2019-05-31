@@ -16,9 +16,30 @@
         <span th:text="${customer.email}"></span>
         <span th:text="${customer.tel}"></span>
 
-        <span><button>Update</button></span>
-        <span><button>Delete</button></span>
+        <button>Update</button>
+
+        <form action="/DeleteCustomer" method='POST'>
+            <input type="hidden" th:value="${customer.name}" name="name"/>
+            <input type="submit" value="Delete" onclick="getConfirmation()"/>
+
+        </form>
+
     </div>
+
+
+    <script type = "text/javascript">
+
+        function getConfirmation() {
+            var warning = confirm("Don't do this");
+
+            if(warning == true) {
+
+            }
+            else {
+                warning == false;
+            }
+        }
+    </script>
 
 </body>
 </html>

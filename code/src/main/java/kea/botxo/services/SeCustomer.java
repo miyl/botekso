@@ -22,4 +22,19 @@ public class SeCustomer {
     public Customer fetch(String name) {
       return reCustomer.fetch(name);
     }
+
+    public void addCustomer(Customer customer) {
+        reCustomer.add(customer);
+    }
+
+    public void update(Customer customer) {
+        reCustomer.update(customer);
+    }
+
+    public void delete(String name) {
+        reCustomer.delete(name);
+    }
+
+
+
 }
