@@ -23,11 +23,12 @@ public class ReAuthType {
         return template.query(sql, rowMapper);
     }
 
-    public boolean delete(AuthType a) {
-      return true;
+    public boolean delete(String a) {
+      String sql = "DELETE FROM auth_types WHERE auth_type=?";
+      return ( template.update(sql, a) != 0 );
     }
 
-    public boolean add(AuthType a) {
+    public boolean add(String a) {
       return true;
     }
 

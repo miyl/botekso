@@ -50,7 +50,7 @@ public class FrontendController implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/Results").setViewName("Results");
+        registry.addViewController("/LoginSuccess").setViewName("LoginSuccess");
     }
 
     // LOGIN
@@ -67,7 +67,7 @@ public class FrontendController implements WebMvcConfigurer {
         String loginname = webRequest.getParameter("name");
         String password = webRequest.getParameter("password");
         if(seUser.validateLogin(loginname, password)){
-            return "Results";
+            return "LoginSuccess";
         }
 
         return "errorpage";
@@ -99,7 +99,13 @@ public class FrontendController implements WebMvcConfigurer {
         }
         //String customername = wr.getParameter("customer");
         seWebhook.add(webhook);
-        return "redirect:/Results";
+        return "redirect:/ListWebhooks";
+    }
+
+    @PostMapping("/DeleteWebhook")
+    public String deleteWebhook (@RequestParam("id") int id) {
+        seWebhook.delete(id);
+        return "redirect:/ListWebhooks";
     }
 
     // CUSTOMER
@@ -108,12 +114,6 @@ public class FrontendController implements WebMvcConfigurer {
     public String showListCustomers(Model model){
         model.addAttribute("Customers", seCustomer.fetchAll());
         return "ListCustomers";
-    }
-
-    @PostMapping("/DeleteCustomer")
-    public String deleteCustomer (@RequestParam("name") String name) {
-        seUser.delete(name);
-        return "redirect:/ListCustomer";
     }
 
     //customer formular
@@ -127,7 +127,13 @@ public class FrontendController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "CreateCustomer";
         }
-        return "redirect:/Results";
+        return "redirect:/ListCustomers";
+    }
+
+    @PostMapping("/DeleteCustomer")
+    public String deleteCustomer (@RequestParam("name") String name) {
+        seUser.delete(name);
+        return "redirect:/ListCustomers";
     }
 
     // USER
@@ -138,13 +144,6 @@ public class FrontendController implements WebMvcConfigurer {
         return "ListUsers";
 
     }
-
-    @PostMapping("/DeleteUser")
-    public String deleteUser (@RequestParam("name") String name){
-        seUser.delete(name);
-        return "redirect:/ListUsers";
-    }
-
 
     //vis create user formular
     @GetMapping("/CreateUser")
@@ -160,13 +159,37 @@ public class FrontendController implements WebMvcConfigurer {
         return "redirect:/ListUsers";
     }
 
+    @PostMapping("/DeleteUser")
+    public String deleteUser (@RequestParam("name") String name){
+        seUser.delete(name);
+        return "redirect:/ListUsers";
+    }
+
     // API-KEY
     
     @GetMapping("/ListApiKeys")
     public String showListApiKeys(Model model){
         // Udkommenteret indtil metoden er lavet
-        // model.addAttribute("ListApiKeys", seApiKey.fetchAll());
+        model.addAttribute("ListApiKeys", seApiKey.fetchAll());
         return "ListApiKeys";
+    }
+
+    @GetMapping("/GenerateApiKeyForm")
+    public String generateApiKeyForm(Model model) {
+      model.addAttribute("Customers", seCustomer.fetchAll());
+      return "GenerateApiKeyForm";
+    }
+
+    @PostMapping("/GenerateApiKey")
+    public String generateApiKey(@RequestParam("customerName") String customerName) {
+      seApiKey.generate(customerName);
+      return "redirect:/ListApiKeys";
+    }
+
+    @PostMapping("/DeleteApiKey")
+    public String deleteApiKey (@RequestParam("name") String key){
+        seApiKey.delete(key);
+        return "redirect:/ListApiKeys";
     }
     
     // HTTP REQUEST TYPES
@@ -176,6 +199,12 @@ public class FrontendController implements WebMvcConfigurer {
         model.addAttribute("HttpRequestTypes", seHttpRequestType.fetchAll());
         return "ListHttpRequestTypes";
     }
+
+    @PostMapping("/DeleteHttpRequestType")
+    public String deleteHttpRequestType (@RequestParam("httpRequestType") String httpRequestType){
+        seHttpRequestType.delete(httpRequestType);
+        return "redirect:/ListHttpRequestTypes";
+    }
     
     // AUTH TYPES
     
@@ -183,6 +212,12 @@ public class FrontendController implements WebMvcConfigurer {
     public String showListAuthTypes(Model model){
         model.addAttribute("AuthTypes", seAuthType.fetchAll());
         return "ListAuthTypes";
+    }
+
+    @PostMapping("/DeleteAuthType")
+    public String deleteAuthType (@RequestParam("authType") String authType){
+        seAuthType.delete(authType);
+        return "redirect:/ListAuthTypes";
     }
 
 }

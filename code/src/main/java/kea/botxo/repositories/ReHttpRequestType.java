@@ -23,11 +23,12 @@ public class ReHttpRequestType {
       return template.query(sql, rowMapper);
     }
 
-    public boolean delete(HttpRequestType h) {
-      return true;
+    public boolean delete(String h) {
+      String sql = "DELETE FROM http_request_types WHERE http_request_type=?";
+      return ( template.update(sql, h) != 0 );
     }
 
-    public boolean add(HttpRequestType h) {
+    public boolean add(String h) {
       return true;
     }
   

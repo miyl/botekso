@@ -18,12 +18,12 @@ public class SeAuthType {
       return reAuthType.fetchAll();
     }
 
-    public boolean delete(AuthType a) {
-      return true;
+    public boolean delete(String a) {
+      return reAuthType.delete(a);
     }
 
-    public boolean add(AuthType a) {
-      return true;
+    public boolean add(String a) {
+      return reAuthType.add(a);
     }
   
 }

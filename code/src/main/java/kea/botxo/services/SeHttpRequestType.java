@@ -18,12 +18,12 @@ public class SeHttpRequestType {
       return reHttpRequestType.fetchAll();
     }
 
-    public boolean delete(HttpRequestType h) {
-      return true;
+    public boolean delete(String h) {
+      return reHttpRequestType.delete(h);
     }
 
-    public boolean add(HttpRequestType h) {
-      return true;
+    public boolean add(String h) {
+      return reHttpRequestType.add(h);
     }
   
 }
