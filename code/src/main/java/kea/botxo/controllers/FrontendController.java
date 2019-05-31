@@ -78,7 +78,7 @@ public class FrontendController implements WebMvcConfigurer {
     
     @GetMapping("/ListWebhooks")
     public String showListWebhooks(Model model){
-        model.addAttribute("ListWebhooks", seWebhook.fetchAll());
+        model.addAttribute("webhooks", seWebhook.fetchAll());
         return "ListWebhooks";
     }
 
@@ -112,7 +112,7 @@ public class FrontendController implements WebMvcConfigurer {
     
     @GetMapping("/ListCustomers")
     public String showListCustomers(Model model){
-        model.addAttribute("Customers", seCustomer.fetchAll());
+        model.addAttribute("customers", seCustomer.fetchAll());
         return "ListCustomers";
     }
 
@@ -140,7 +140,7 @@ public class FrontendController implements WebMvcConfigurer {
 
     @GetMapping("/ListUsers")
     public String showListUsers(Model model) {
-        model.addAttribute("Users", seUser.fetchAll());
+        model.addAttribute("users", seUser.fetchAll());
         return "ListUsers";
 
     }
@@ -170,13 +170,13 @@ public class FrontendController implements WebMvcConfigurer {
     @GetMapping("/ListApiKeys")
     public String showListApiKeys(Model model){
         // Udkommenteret indtil metoden er lavet
-        model.addAttribute("ListApiKeys", seApiKey.fetchAll());
+        model.addAttribute("apiKeys", seApiKey.fetchAll());
         return "ListApiKeys";
     }
 
     @GetMapping("/GenerateApiKeyForm")
     public String generateApiKeyForm(Model model) {
-      model.addAttribute("Customers", seCustomer.fetchAll());
+      model.addAttribute("customers", seCustomer.fetchAll());
       return "GenerateApiKeyForm";
     }
 
@@ -196,7 +196,7 @@ public class FrontendController implements WebMvcConfigurer {
     
     @GetMapping("/ListHttpRequestTypes")
     public String showListHttpRequestTypes(Model model){
-        model.addAttribute("HttpRequestTypes", seHttpRequestType.fetchAll());
+        model.addAttribute("httpRequestTypes", seHttpRequestType.fetchAll());
         return "ListHttpRequestTypes";
     }
 
@@ -210,7 +210,7 @@ public class FrontendController implements WebMvcConfigurer {
     
     @GetMapping("/ListAuthTypes")
     public String showListAuthTypes(Model model){
-        model.addAttribute("AuthTypes", seAuthType.fetchAll());
+        model.addAttribute("authTypes", seAuthType.fetchAll());
         return "ListAuthTypes";
     }
 

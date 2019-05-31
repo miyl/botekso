@@ -4,19 +4,21 @@
     <!--/*/ <th:block th:include="fragments/head.html"> </th:block> /*/-->
     <title>Customers</title>
 </head>
-<body>
+<body class='list'>
 
     <div th:insert="fragments/topnav">Menu</div>
 
     <a href="/CreateCustomer"><button>Add Customer</button></a>
 
-    <p th:each="customer : ${Customers}"}>
+    <!-- For some reason these -->
+    <div th:each="customer : ${customers}"}>
         <span th:text="${customer.name}"></span>
         <span th:text="${customer.email}"></span>
         <span th:text="${customer.tel}"></span>
+
         <span><button>Update</button></span>
         <span><button>Delete</button></span>
-    </p>
+    </div>
 
 </body>
 </html>

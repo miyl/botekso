@@ -21,3 +21,8 @@ body {
 .topnav a:hover {
   text-decoration: underline;
 }
+
+/* The form  on list pages - used for update and delete - should not be displayed as a block element */
+.list form {
+  display: inline;
+}

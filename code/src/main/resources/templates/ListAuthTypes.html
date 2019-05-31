@@ -5,17 +5,21 @@
     <title>Authentication Types</title>
 </head>
 
-<body>
+<body class='list'>
 
     <div th:insert="fragments/topnav">Menu</div>
 
     <a href="/CreateAuthType"><button>Add Auth Type</button></a>
 
-    <p th:each="anAuthType : ${AuthTypes}"}>
+    <div th:each="anAuthType : ${authTypes}"}>
         <span th:text="${anAuthType.authType}"></span>
-        <span><button>Update</button></span>
-        <span><button>Delete</button></span>
-    </p>
+
+        <button>Update</button>
+        <form action="/DeleteAuthType" method='POST'>
+            <input type="hidden" th:value="${anAuthType.authType}" name="authType"/>
+            <input type="submit" value="Delete"/>
+        </form>
+    </div>
 
 </body>
 </html>

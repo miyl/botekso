@@ -4,21 +4,25 @@
     <!--/*/ <th:block th:include="fragments/head.html"> </th:block> /*/-->
     <title>Webhooks</title>
 </head>
-<body>
+<body class='list'>
 
     <div th:insert="fragments/topnav">Menu</div>
 
     <a href="/CreateWebhook"><button>Add Webhook</button></a>
 
-    <p th:each="webhook : ${ListWebhooks}"}>
+    <div th:each="webhook : ${webhooks}"}>
         <span th:text="${webhook.name}"></span>
         <span th:text="${webhook.url}"></span>
         <span th:text="${webhook.body}"></span>
         <span th:text="${webhook.responseOnSuccess}"></span>
         <span th:text="${webhook.responseOnError}"></span>
-        <span><button>Update</button></span>
-        <span><button>Delete</button></span>
-    </p>
+
+        <button>Update</button>
+        <form action="/DeleteWebhook" method='POST'>
+            <input type="hidden" th:value="${webhook.id}" name="id"/>
+            <input type="submit" value="Delete"/>
+        </form>
+    </div>
 
 </body>
 </html>
