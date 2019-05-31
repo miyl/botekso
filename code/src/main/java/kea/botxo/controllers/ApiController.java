@@ -20,6 +20,10 @@ import kea.botxo.models.Webhook;
 import kea.botxo.models.Customer;
 import kea.botxo.models.ApiKey;
 
+// Make HTTP request and handle server response
+import kea.botxo.models.ServerResponse;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.List;
 
 @RestController
@@ -41,7 +45,7 @@ public class ApiController {
   }
 
   @PostMapping("/execute/{idp}")
-  public Object execute(@PathVariable("idp") int id, @RequestParam("key") String key) {
+  public Object execute(@PathVariable("idp") int id, @RequestParam("key") String receivedKey) {
     // 1. Fetch the requested webhook
     // TODO: What should seWebhook return if the ID does not exist? I should call it and check for errors here!
     Webhook w = seWebhook.fetch(id);
@@ -49,13 +53,18 @@ public class ApiController {
     // 2. Validate that the API Key matches the requested Webhook:
     // Get the webhook's customer
     String customerName = w.getCustomerName();
+    System.out.println("Customer name: " + customerName);
     // Customer c = seCustomer.fetch(customerName);
     // Compare all api keys that customer has to the api key provided in the request
     List<ApiKey> keys = seApiKey.fetchAllForCustomer(customerName);
 
     boolean authenticated = false;
+    System.out.println("Key passed in request: " + receivedKey);
+    System.out.println("Number of keys found for customer: " + keys.size());
     for (ApiKey k : keys) {
-      if ( k.equals(key) ) { 
+      System.out.println(k);
+      String keyStr = k.getKey();
+      if ( keyStr.equals(receivedKey) ) { 
         authenticated = true;
         break; // No need to check additional API keys when the valid one is found
       }
@@ -67,9 +76,12 @@ public class ApiController {
     }
     else {
       // 3. Make appropriate request to third party (execute the webhook)
+      RestTemplate restTemplate = new RestTemplate();
+      ServerResponse sr = restTemplate.getForObject("http://localhost:9090/api/run", ServerResponse.class);
+      System.out.println(sr);
 
       // 4. Send the response to the virtual assistant
-      return new Object(); // What return value should execute have?! 
+      return sr;
     }
   }
 }

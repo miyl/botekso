@@ -74,7 +74,7 @@ public class ReWebhook {
         //TODO: skal fixes som er hardcoded.
         //de 3 sidste.
         String sql = "INSERT INTO webhooks" + 
-                "( name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) VALUES (" +
+                "( name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer_name) VALUES (" +
                 "?, ?, ?, ?, ?, 'POST', 'None', 'Tiger of Sweden');";
         //template.update returns affected rows.
         int res = template.update(sql, webhook.getName(), webhook.getUrl(), webhook.getBody(), webhook.getResponseOnSuccess(), webhook.getResponseOnError());

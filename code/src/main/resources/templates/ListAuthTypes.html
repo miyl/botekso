@@ -11,10 +11,9 @@
 
     <a href="/CreateAuthType"><button>Add Auth Type</button></a>
 
-    <div th:each="anAuthType : ${authTypes}"}>
+    <div th:each="anAuthType : ${authTypes}">
         <span th:text="${anAuthType.authType}"></span>
 
-        <button>Update</button>
         <form action="/DeleteAuthType" method='POST'>
             <input type="hidden" th:value="${anAuthType.authType}" name="authType"/>
             <input type="submit" value="Delete"/>

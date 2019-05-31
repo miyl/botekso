@@ -74,19 +74,19 @@ VALUES ('tariq', 'tariq@zamanien.dk', '4577777777');
 
 -- Omitting special characters
 
-INSERT INTO api_keys (`key`, customer)
+INSERT INTO api_keys (`key`, customer_name)
 VALUES('dx4BhhZPSKaKnJmZ7PdQUGjSpwtFM4mBwUdQa84fCuFDUK4waUtwKqrEyvAhoSy7jMPfdfJSWXYcG4kPqQJMyiFgzVzNquxfsKVD', 'Carlsberg');
 
-INSERT INTO api_keys (`key`, customer)
+INSERT INTO api_keys (`key`, customer_name)
 VALUES('vipGo8LbUdsVPM2vBxBXuLEh46DV78Ya5CSD9vcgEy7pwXuhWYAgB3ANnrWAz7wxEHeSfX9CfsEtzNvGPL4HCvpKXi7KNMSa4ZJd', 'Tiger of Sweden');
 
-INSERT INTO api_keys (`key`, customer)
+INSERT INTO api_keys (`key`, customer_name)
 VALUES('W77P37YzLHp4aegeFFxosxAQq7z4jaZ8UdXJyc89RecKfXMZsXoDjGJAGKSv8uyg7vtB75c7rzdcYuQvWUXjmQPsAk9v9pa78Eib', 'Tiger of Sweden');
 
 
 -- ID is auto increment
-INSERT INTO webhooks (name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) 
-VALUES ('Send email til Chauffør', 'localhost:9999', 
+INSERT INTO webhooks (name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer_name)
+VALUES ('Send email til Chauffør', 'localhost:9999',
   'From: "Bob Example" <bob@example.com>
   To: Alice Example <alice@example.com>
   Cc: theboss@example.com
@@ -99,8 +99,8 @@ VALUES ('Send email til Chauffør', 'localhost:9999',
   Bob', 
   200, 403, 'POST', 'None', 'Tiger of Sweden');
 
-INSERT INTO webhooks (name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) 
+INSERT INTO webhooks (name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer_name)
 VALUES ('Tjek lagerstatus på vare', 'localhost:9999', '', 200, 403, 'POST', 'None', 'Tiger of Sweden');
 
-INSERT INTO webhooks (name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer) 
+INSERT INTO webhooks (name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer_name)
 VALUES ('Send email til Chauffør', 'localhost:9999', '', 200, 403, 'GET', 'None', 'Carlsberg');

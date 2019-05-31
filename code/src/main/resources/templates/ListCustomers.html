@@ -11,7 +11,7 @@
     <a href="/CreateCustomer"><button>Add Customer</button></a>
 
     <!-- For some reason these -->
-    <div th:each="customer : ${customers}"}>
+    <div th:each="customer : ${customers}">
         <span th:text="${customer.name}"></span>
         <span th:text="${customer.email}"></span>
         <span th:text="${customer.tel}"></span>

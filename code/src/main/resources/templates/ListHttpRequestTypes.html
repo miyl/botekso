@@ -10,10 +10,9 @@
 
     <a href="/CreateHttpRequestType"><button>Add HTTP Request Type</button></a>
 
-    <div th:each="anHttpRequestType : ${httpRequestTypes}"}>
+    <div th:each="anHttpRequestType : ${httpRequestTypes}">
         <span th:text="${anHttpRequestType.httpRequestType}"></span>
 
-        <button>Update</button>
         <form style="display: inline;" action="/DeleteHttpRequestType" method='POST'>
             <input type="hidden" th:value="${anHttpRequestType.httpRequestType}" name="httpRequestType"/>
             <input type="submit" value="Delete"/>

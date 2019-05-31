@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+import kea.botxo.testserver.models.Response;
+
 @RestController
 @RequestMapping("api")
 public class Controller {
 
   @GetMapping("/run")
   public Object list() {
-    return "Success!";
+    return new Response("Hey!", "There!");
   }
 
 }

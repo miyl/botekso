@@ -10,7 +10,7 @@
 
     <a href="/CreateWebhook"><button>Add Webhook</button></a>
 
-    <div th:each="webhook : ${webhooks}"}>
+    <div th:each="webhook : ${webhooks}">
         <span th:text="${webhook.name}"></span>
         <span th:text="${webhook.url}"></span>
         <span th:text="${webhook.body}"></span>
