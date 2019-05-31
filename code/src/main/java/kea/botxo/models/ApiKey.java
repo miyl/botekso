@@ -9,7 +9,7 @@ public class ApiKey {
     private String key;
 
     // Thoughts: Should it store a Customer, or the Customer's primary key: its name?
-    private Customer customer;
+    private String customerName;
 
 
     public String getKey() {
@@ -20,12 +20,12 @@ public class ApiKey {
       this.key = key;
     }
 
-    public Customer getCustomer() {
-      return customer;
+    public String getCustomerName() {
+      return customerName;
     }
 
-    public void setCustomer(Customer customer) {
-      this.customer = customer;
+    public void setCustomerName(String customerName) {
+      this.customerName = customerName;
     }
 
 }
