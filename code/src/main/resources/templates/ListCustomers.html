@@ -2,8 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <!-- Required meta tags -->
-
     <!--/*/ <th:block th:include="fragments/head.html"> </th:block> /*/-->
     <title>Customer List</title>
 </head>
@@ -12,12 +10,14 @@
 
     <div th:insert="fragments/topnav">Menu</div>
 
-    <a href="/CreateCustomer"><button>Add Customer</button></a>
+
 
     <div class="container">
 
         <h3>Customer List</h3>
         <hr>
+
+        <a href="/CreateCustomer"><button>Add Customer</button></a>
 
 
         <table class="table table-bordered table-striped">

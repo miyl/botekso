@@ -1,20 +1,57 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <!--/*/ <th:block th:include="fragments/head.html"> </th:block> /*/-->
     <title>API Keys</title>
 </head>
-<body>
+
+<body class='list'>
 
 <div th:insert="fragments/topnav">Menu</div>
 
-<a href="/GenerateApiKeyForm"><button>Generate API Key</button></a>
 
-<div th:each="apikey : ${apiKeys}"}>
-    <span th:text="${apikey.key}"></span>
-    <span th:text="${apikey.customerName}"></span>
-    <span><button>Delete</button></span>
+
+<div class="container">
+
+    <h3>API Keys</h3>
+    <hr>
+
+    <a href="/GenerateApiKeyForm"><button>Generate API Key</button></a>
+
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead bg-dark">
+        <tr>
+            <th class="text-white">Customer </th>
+            <th class="text-white">API Key  </th>
+            <th class="text-white">Edit     </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="apiKey : ${apiKeys}">
+            <td th:text="${apiKey.customerName}"> />
+            <td th:text="${apiKey.key}">          />
+            <td>
+                <form action="/UpdateAPIKey" method='POST'>
+                    <input type="hidden" th:value="${apiKey.key}" name="name"/>
+                    <input type="submit" value="Update"/>
+                </form>
+
+                <form action="/DeleteApiKey" method='POST'>
+                    <input type="hidden" th:value="${apiKey.key}" name="name"/>
+                    <input type="submit" value="Delete"/>
+                </form>
+
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
 </div>
+
 
 </body>
 </html>

@@ -11,10 +11,12 @@
 <body class='list'>
 
     <div th:insert="fragments/topnav">Menu</div>
-    <a href="/CreateWebhook"><button>Add Webhook</button></a>
+
 
     <h3>Webhook List</h3>
     <hr>
+
+    <a href="/CreateWebhook"><button>Add Webhook</button></a>
 
 
     <table class="table table-bordered table-striped">
@@ -27,10 +29,8 @@
             <th class="text-white">Body                 </th>
             <th class="text-white">Response On Success  </th>
             <th class="text-white">Response On Error    </th>
-            <!-- Tilføjes når disse er skabt i Webhooks
             <th class="text-white">Auth-Type            </th>
             <th class="text-white">HTTP-Request Type    </th>
-            -->
             <th class="text-white">Edit                 </th>
 
         </tr>
@@ -48,10 +48,9 @@
             <td th:text="${webhook.body}">            />
             <td th:text="${webhook.responseOnSuccess}"/>
             <td th:text="${webhook.responseOnError}"> />
-            <!- TIlføjes når disse er skabt i ReWebhook og SeWebhook
-            <td th:text="${webhook.c}"         />
+            <td th:text="${webhook.authType}"         />
             <td th:text="${webhook.httpRequestType}"  />
-            -->
+
             <td>
                 <form action="/UpdateCustomer" method='POST'>
                     <input type="hidden" th:value="${webhook.id}" name="name"/>

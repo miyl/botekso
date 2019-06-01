@@ -4,20 +4,48 @@
     <!--/*/ <th:block th:include="fragments/head.html"> </th:block> /*/-->
     <title>HTTP Request Types</title>
 </head>
-<body>
+<body class='list'>
 
     <div th:insert="fragments/topnav">Menu</div>
 
-    <a href="/CreateHttpRequestType"><button>Add HTTP Request Type</button></a>
 
-    <div th:each="anHttpRequestType : ${httpRequestTypes}">
-        <span th:text="${anHttpRequestType.httpRequestType}"></span>
 
-        <form style="display: inline;" action="/DeleteHttpRequestType" method='POST'>
-            <input type="hidden" th:value="${anHttpRequestType.httpRequestType}" name="httpRequestType"/>
-            <input type="submit" value="Delete"/>
-        </form>
+    <div class="container">
+
+        <h3>Authentication Type</h3>
+        <hr>
+
+        <a href="/CreateHttpRequestType"><button>Add HTTP Request Type</button></a>
+
+
+        <table class="table table-bordered table-striped">
+            <thead class="thead bg-dark">
+            <tr>
+                <th class="text-white">HTTP Request Type </th>
+                <th class="text-white">Edit     </th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="anHttpRequestType : ${httpRequestTypes}">
+                <td th:text="${anHttpRequestType.httpRequestType}"> />
+                <td>
+                    <form action="/UpdateHttpRequestType" method='POST'>
+                        <input type="hidden" th:value="${anHttpRequestType.httpRequestType}" name="httpRequestType"/>
+                        <input type="submit" value="Update"/>
+                    </form>
+
+                    <form style="display: inline;" action="/DeleteHttpRequestType" method='POST'>
+                        <input type="hidden" th:value="${anHttpRequestType.httpRequestType}" name="httpRequestType"/>
+                        <input type="submit" value="Delete"/>
+                    </form>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
+
 
 </body>
 </html>
