@@ -1,45 +1,78 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
+    <!-- Required meta tags -->
+
     <!--/*/ <th:block th:include="fragments/head.html"> </th:block> /*/-->
-    <title>Customers</title>
+    <title>Customer List</title>
 </head>
+
 <body class='list'>
 
     <div th:insert="fragments/topnav">Menu</div>
 
     <a href="/CreateCustomer"><button>Add Customer</button></a>
 
-    <!-- For some reason these -->
-    <div th:each="customer : ${customers}">
-        <span th:text="${customer.name}"></span>
-        <span th:text="${customer.email}"></span>
-        <span th:text="${customer.tel}"></span>
+    <div class="container">
 
-        <button>Update</button>
+        <h3>Customer List</h3>
+        <hr>
 
-        <form action="/DeleteCustomer" method='POST'>
-            <input type="hidden" th:value="${customer.name}" name="name"/>
-            <input type="submit" value="Delete" onclick="getConfirmation()"/>
 
-        </form>
+        <table class="table table-bordered table-striped">
+            <thead class="thead bg-dark">
+            <tr>
+                <th class="text-white">Name         </th>
+                <th class="text-white">Email        </th>
+                <th class="text-white">Telephone    </th>
+                <th class="text-white">Edit    </th>
+            </tr>
+            </thead>
 
+            <tbody>
+            <!-- tempEmployee = Loop parameter-->
+            <!--                  : = Loops over list of employees-->
+            <!--                      employees comes from our Java code-->
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.name}"            />
+                <td th:text="${customer.email}">          />
+                <td th:text="${customer.tel}">          />
+                <td>
+                    <form action="/UpdateCustomer" method='POST'>
+                        <input type="hidden" th:value="${customer.name}" name="name"/>
+                        <input type="submit" value="Update"/>
+                    </form>
+
+                    <form action="/DeleteCustomer" method='POST'>
+                        <input type="hidden" th:value="${customer.name}" name="name"/>
+                        <input type="submit" value="Delete" onclick="getConfirmation()" />
+                    </form>
+
+                </td>
+
+
+                <script type = "text/javascript">
+
+                    function getConfirmation() {
+                        var warning = confirm("By accepting, you will delete the Customer with its related API-key(s) and HTTP-Requst type(s)");
+
+                        if(warning == true) {
+
+                        }
+                        else {
+                            warning == false;
+                        }
+                    }
+                </script>
+
+
+
+            </tr>
+            </tbody>
+        </table>
     </div>
 
-
-    <script type = "text/javascript">
-
-        function getConfirmation() {
-            var warning = confirm("By accepting, you will delete the Customer with its related API-key(s) and HTTP-Requst type(s)");
-
-            if(warning == true) {
-
-            }
-            else {
-                warning == false;
-            }
-        }
-    </script>
 
 </body>
 </html>
