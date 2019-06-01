@@ -42,12 +42,12 @@ public class ReApiKey {
     }
 
     public boolean delete(String key) {
-        String sql = "DELETE FROM api_key WHERE key = ?";
+        String sql = "DELETE FROM api_keys WHERE key = ?";
         return (template.update(sql, key) != 0);
     }
 
     public ApiKey fetch(String key) {
-        String sql = "SELECT * FROM api_key WHERE key = ?";
+        String sql = "SELECT * FROM api_keys WHERE key = ?";
         RowMapper<ApiKey> rowMapper = new BeanPropertyRowMapper<>(ApiKey.class);
         return template.queryForObject(sql, rowMapper, key);
     }
