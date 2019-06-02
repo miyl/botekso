@@ -11,12 +11,20 @@ import kea.botxo.models.Customer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 @Repository
 public class ReCustomer {
 
     @Autowired
     JdbcTemplate template;
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Customer fetch(String name){
 
         String sql = "SELECT * FROM customers WHERE name=?";
@@ -25,6 +33,10 @@ public class ReCustomer {
         return template.queryForObject(sql, rowMapper, name);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Customer> fetchAll(){
 
 
@@ -51,10 +63,20 @@ public class ReCustomer {
 
     }
 
+    /**
+     *
+     * @param customer
+     * @return
+     */
     public boolean update(Customer customer){
         return true;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     public boolean delete(String name) {
         String sql = "DELETE FROM customers WHERE name=?";
         int result = template.update(sql, name);
@@ -67,6 +89,11 @@ public class ReCustomer {
         }
     }
 
+    /**
+     *
+     * @param customer
+     * @return
+     */
     public boolean add(Customer customer){
         return true;
     }

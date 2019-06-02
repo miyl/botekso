@@ -10,24 +10,41 @@ import kea.botxo.models.ApiKey;
 import java.util.List;
 import java.util.Random;
 
+/**
+ *
+ */
 @Repository
 public class ReApiKey {
 
     @Autowired
     JdbcTemplate template;
 
+    /**
+     *
+     * @param customerName
+     * @return
+     */
     public List<ApiKey> fetchAllForCustomer(String customerName) {
         String sql = "SELECT * FROM api_keys WHERE customer_name = ?";
         RowMapper<ApiKey> rowMapper = new BeanPropertyRowMapper<>(ApiKey.class);
         return template.query(sql, rowMapper, customerName);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<ApiKey> fetchAll() {
         String sql = "SELECT * FROM api_keys";
         RowMapper<ApiKey> rowMapper = new BeanPropertyRowMapper<>(ApiKey.class);
         return template.query(sql, rowMapper);
     }
 
+    /**
+     *
+     * @param customerName
+     * @return
+     */
     public boolean generate(String customerName) {
         char[] possibleCharacters = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','y','z',
                                         'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Y','Z',
@@ -41,11 +58,21 @@ public class ReApiKey {
         return (template.update(sql, newApiKey, customerName) != 0);
     }
 
+    /**
+     *
+     * @param key
+     * @return
+     */
     public boolean delete(String key) {
         String sql = "DELETE FROM api_keys WHERE `key` = ?";
         return (template.update(sql, key) != 0);
     }
 
+    /**
+     *
+     * @param key
+     * @return
+     */
     public ApiKey fetch(String key) {
         String sql = "SELECT * FROM api_keys WHERE `key` = ?";
         RowMapper<ApiKey> rowMapper = new BeanPropertyRowMapper<>(ApiKey.class);

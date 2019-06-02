@@ -2,6 +2,9 @@ package kea.botxo.models;
 
 import javax.validation.constraints.*;
 
+/**
+ *
+ */
 public class Customer {
 
     @NotNull

@@ -10,7 +10,7 @@
 
 <!--th:action= skal umiddelbartpege på den i Controlleren-->
 <!--th:object skal hedde det samme som det objekt der bliver oprettet i controllern.-->
-    <form action="#" th:action="@{/CreateWebhook}" th:object="${webhook}" method="post">
+    <form th:object="${webhook}" method="POST">
         <table>
             <tr>
                 <td>Webhook name:</td>
@@ -48,8 +48,8 @@
                 <td>Choose Customer:</td>
                 <td>
                     <select>
-                        <p th:each="customer : ${customers}">
-                            <option th:value="customer" th:text="${customer.name}"></option>
+                        <p th:each="customerName : ${customersNames}">
+                            <option th:value="customerName" th:text="${customerName}"></option>
                         </p>
                     </select>
                 </td>

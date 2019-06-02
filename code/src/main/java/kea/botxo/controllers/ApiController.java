@@ -26,6 +26,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+/**
+ * The controller for our API
+ */
 @RestController
 @RequestMapping("api")
 public class ApiController {
@@ -39,11 +42,23 @@ public class ApiController {
   @Autowired
   SeCustomer seCustomer;
 
+  /**
+   *
+   * @author Marcus
+   * @return Returns a list of webhooks in JSON format to the source of the HTTP GET Request.
+   */
   @GetMapping("/list")
   public List<Webhook> list() {
     return seWebhook.fetchAll();
   }
 
+  /**
+   *
+   * @author Marcus
+   * @param id The ID for the webhook that should be executed
+   * @param receivedKey The API Key that should match the webhook ID if the webhook is to be executed.
+   * @return If the key is valid the key is returned. Otherwise an errormessage is returned.
+   */
   @PostMapping("/execute/{idp}")
   public Object execute(@PathVariable("idp") int id, @RequestParam("key") String receivedKey) {
     // 1. Fetch the requested webhook

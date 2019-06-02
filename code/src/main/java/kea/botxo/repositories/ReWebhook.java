@@ -15,14 +15,20 @@ import java.util.Map;
 
 import java.sql.Types;
 
+/**
+ *
+ */
 @Repository
 public class ReWebhook {
 
     @Autowired
     JdbcTemplate template;
 
-    public ReWebhook(){}
-
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Webhook fetch(int id){
 
         String sql = "SELECT * FROM webhooks WHERE id=?";
@@ -31,6 +37,10 @@ public class ReWebhook {
         return template.queryForObject(sql, rowMapper, id);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Webhook> fetchAll(){
 
 
@@ -60,16 +70,31 @@ public class ReWebhook {
         return template.query(sql, rowMapper);
     }
 
+    /**
+     *
+     * @param webhook
+     * @return
+     */
     public boolean update(Webhook webhook){
         //update
         return true;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean delete(int id){
         String sql = "DELETE FROM webhooks WHERE id=?";
         return ( template.update(sql, id) != 0 );
     }
 
+    /**
+     *
+     * @param webhook
+     * @return
+     */
     public boolean add(Webhook webhook){
         //TODO: skal fixes som er hardcoded.
         //de 3 sidste.
@@ -81,6 +106,4 @@ public class ReWebhook {
         return (res != 0)? true : false;
 
     }
-
-
 }

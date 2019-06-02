@@ -8,7 +8,7 @@
 
     <div th:insert="fragments/topnav">Menu</div>
 
-    <form action="#" th:action="@{/CreateCustomer}" th:object="${customer}" method="post">
+    <form th:object="${customer}" method="POST">
         <table>
             <tr>
                 <td>Name:</td>

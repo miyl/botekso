@@ -10,12 +10,19 @@ import kea.botxo.models.AuthType;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 @Repository
 public class ReAuthType {
 
     @Autowired
     JdbcTemplate template;
 
+    /**
+     *
+     * @return
+     */
     public List<AuthType> fetchAll() {
 
         String sql = "SELECT * FROM auth_types";
@@ -23,11 +30,21 @@ public class ReAuthType {
         return template.query(sql, rowMapper);
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public boolean delete(String a) {
       String sql = "DELETE FROM auth_types WHERE auth_type=?";
       return ( template.update(sql, a) != 0 );
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public boolean add(AuthType a) {
       String sql = "INSERT INTO auth_types (auth_type) VALUES (?)";
       return ( template.update(sql, a.getAuthType() ) != 0 );

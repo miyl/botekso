@@ -3,9 +3,12 @@ package kea.botxo.models;
 import org.hibernate.validator.constraints.URL;
 import javax.validation.constraints.*;
 
+/**
+ *
+ */
 public class Webhook {
 
-    /**
+    /*
      * Noter.
      * Husk Getters / setters ellers vil det ikke virke.
      *

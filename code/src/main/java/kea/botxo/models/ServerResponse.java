@@ -2,6 +2,9 @@ package kea.botxo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ *
+ */
 // If the server sends any JSON values not represented in this model, ignore them
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ServerResponse {

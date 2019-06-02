@@ -8,20 +8,37 @@ import kea.botxo.repositories.ReAuthType;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 @Service
 public class SeAuthType {
 
     @Autowired
     ReAuthType reAuthType;
 
+    /**
+     *
+     * @return
+     */
     public List<AuthType> fetchAll() {
       return reAuthType.fetchAll();
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public boolean delete(String a) {
       return reAuthType.delete(a);
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public boolean add(AuthType a) {
       return reAuthType.add(a);
     }

@@ -10,12 +10,19 @@ import kea.botxo.models.HttpRequestType;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 @Repository
 public class ReHttpRequestType {
 
     @Autowired
     JdbcTemplate template;
 
+    /**
+     *
+     * @return
+     */
     public List<HttpRequestType> fetchAll() {
 
       String sql = "SELECT * FROM http_request_types";
@@ -23,11 +30,21 @@ public class ReHttpRequestType {
       return template.query(sql, rowMapper);
     }
 
+    /**
+     *
+     * @param h
+     * @return
+     */
     public boolean delete(String h) {
       String sql = "DELETE FROM http_request_types WHERE http_request_type=?";
       return ( template.update(sql, h) != 0 );
     }
 
+    /**
+     *
+     * @param h
+     * @return
+     */
     public boolean add(String h) {
       return true;
     }
