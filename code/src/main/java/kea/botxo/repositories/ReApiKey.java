@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Random;
 
 /**
- *
+ * Repository for API-Keys
+ * @author Esben
  */
 @Repository
 public class ReApiKey {
@@ -20,9 +21,10 @@ public class ReApiKey {
     JdbcTemplate template;
 
     /**
-     *
-     * @param customerName
-     * @return
+     * Lists all API-Keys for a specific customer
+     * @author Esben
+     * @param customerName The customer whose API-Keys are to be fetched
+     * @return A list of API-Keys for a specific customer
      */
     public List<ApiKey> fetchAllForCustomer(String customerName) {
         String sql = "SELECT * FROM api_keys WHERE customer_name = ?";
@@ -31,8 +33,9 @@ public class ReApiKey {
     }
 
     /**
-     *
-     * @return
+     * Lists all API-Keys
+     * @author Esben
+     * @return A list of all API-Keys
      */
     public List<ApiKey> fetchAll() {
         String sql = "SELECT * FROM api_keys";
@@ -41,9 +44,10 @@ public class ReApiKey {
     }
 
     /**
-     *
-     * @param customerName
-     * @return
+     * Generates a new API-Key for a specific customer. The API-Key contains 100 random characters (upper/lowercase alphabet and 0-9)
+     * @author Esben
+     * @param customerName The customer who will be the owner of the API-Key
+     * @return Number of rows changed in database: 0 or 1
      */
     public boolean generate(String customerName) {
         char[] possibleCharacters = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','y','z',
@@ -59,9 +63,10 @@ public class ReApiKey {
     }
 
     /**
-     *
-     * @param key
-     * @return
+     * Deletes a specific API-Key
+     * @author Esben
+     * @param key The desired API-Key to be deleted
+     * @return Number of rows changed in database: 0 or 1
      */
     public boolean delete(String key) {
         String sql = "DELETE FROM api_keys WHERE `key` = ?";
@@ -69,9 +74,10 @@ public class ReApiKey {
     }
 
     /**
-     *
-     * @param key
-     * @return
+     * Fetches a specific API-Key
+     * @author Esben
+     * @param key The desired API-Key
+     * @return API-Key object
      */
     public ApiKey fetch(String key) {
         String sql = "SELECT * FROM api_keys WHERE `key` = ?";

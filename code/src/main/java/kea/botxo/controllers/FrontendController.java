@@ -280,7 +280,7 @@ public class FrontendController implements WebMvcConfigurer {
      * For generating an API-Key
      * @author Esben
      * @param model Contains variables to be passed to the template
-     * @return The generate AP- Key form, for selecting which Customer the API-Key should be created for
+     * @return The generate API-Key form, for selecting which Customer the API-Key should be created for
      */
     @GetMapping("/GenerateApiKeyForm")
     public String generateApiKeyForm(Model model) {

@@ -3,7 +3,8 @@ package kea.botxo.models;
 import javax.validation.constraints.*;
 
 /**
- *
+ * API-Key klasse
+ * @Author Esben
  */
 public class ApiKey {
 
@@ -11,7 +12,6 @@ public class ApiKey {
     @Size(min=100, max=100)
     private String key;
 
-    // Thoughts: Should it store a Customer, or the Customer's primary key: its name?
     private String customerName;
 
 
