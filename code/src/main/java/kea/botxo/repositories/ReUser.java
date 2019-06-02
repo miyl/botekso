@@ -83,7 +83,8 @@ public class ReUser {
      * @return Returns a list with the added User
      */
     public boolean add(User user) {
-        return true;
+        String sql = "INSERT INTO frontend_users (name, password, access_level) VALUES (?, ?, ?)";
+        return ( template.update(sql, user.getName(), user.getPassword(), user.getAccessLevel() ) != 0 );
     }
 
 }

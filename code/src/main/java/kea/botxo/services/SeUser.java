@@ -39,8 +39,8 @@ public class SeUser {
      * @param user The user to be added to the Database
      * @Return List of Users with the new User added to it
      */
-    public void add(User user) {
-        reUser.add(user);
+    public boolean add(User user) {
+        return reUser.add(user);
     }
 
     /**
@@ -49,9 +49,9 @@ public class SeUser {
      *             method has to insert data into the Database
      * @return The list of Users with the updated User
      */
-    public void update(User user) {
+    public boolean update(User user) {
 
-        reUser.update(user);
+        return reUser.update(user);
     }
 
     /**
@@ -59,8 +59,8 @@ public class SeUser {
      * @param name Works as an ID to the use which is to be deleted
      * @Return User list with the User removed
      */
-    public void delete(String name) {
-        reUser.delete(name);
+    public boolean delete(String name) {
+        return reUser.delete(name);
     }
 
     /**

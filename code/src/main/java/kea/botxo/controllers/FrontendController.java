@@ -235,23 +235,29 @@ public class FrontendController implements WebMvcConfigurer {
      */
     //vis create user formular
     @GetMapping("/CreateUser")
-    public String showCreateUserForm(User user){
+    public String showCreateUserForm(Model model){
+        model.addAttribute("u", new User()); // TODO: Maybe this is wrong, maybe it SHOULD take a user if validation is to work?
         return "CreateUser";
     }
 
     /**
      * Receives the details filled into the create User form
-     * @author Tariq
+     * @author Tariq, Marcus
      * @param user The user to be created
      * @param bindingResult Used for validation
      * @return
      */
     @PostMapping("/CreateUser")
-    public String checkUserInfo(@Valid User user, BindingResult bindingResult){
+    public String checkUserInfo(Model model, @Valid User user, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return "CreateUser";
+            model.addAttribute("u", user);
+            model.addAttribute("bindingResult", bindingResult);
+            return "CreateUser"; 
         }
-        return "redirect:/ListUsers";
+        else {
+          seUser.add(user);
+          return "redirect:/ListUsers";
+        }
     }
 
     /**

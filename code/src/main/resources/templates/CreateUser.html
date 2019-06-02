@@ -10,7 +10,7 @@
 
 
 <!-- Tilføj at password skal bræftes to gange.-->
-<form th:object="${user}" method="POST">
+<form th:object="${u}" method="POST">
     <table>
         <tr>
             <td>Name:</td>
@@ -19,16 +19,16 @@
         </tr>
         <tr>
             <td>Password:</td>
-            <td><input type="password" placeholder="Password" id="password" required></td>
-            <td><input type="password" placeholder="Confirm Password" id="confirm_password" required></td>
+            <td><input type="password" placeholder="Password"  th:field="*{password}" required></td>
+            <td><input type="password" placeholder="Confirm Password" required></td>
             <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
         </tr>
         <tr>
             <td>
-            <select>
-                <option>Access Level 1</option>
-                <option>Access Level 2</option>
-                <option>Access Level 3</option>
+            <select th:field="*{accessLevel}">
+                <option th:value="1">Access Level 1</option>
+                <option th:value="2">Access Level 2</option>
+                <option th:value="3">Access Level 3</option>
             </select>
             </td>
         </tr>

@@ -13,7 +13,7 @@
 <form th:object="${hrt}" method="POST">
     <table>
         <tr>
-            <td><input placeholder="HttpRequestType" th:field="*{httpRequestType}" /></td>
+            <td><input placeholder="Http Request Type" th:field="*{httpRequestType}" /></td>
             <td th:if="${#fields.hasErrors('httpRequestType')}" th:errors="*{httpRequestType}">AuthType Error</td>
         </tr>
         <tr>
