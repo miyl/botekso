@@ -52,13 +52,13 @@
             <td th:text="${webhook.httpRequestType}"  />
 
             <td>
-                <form action="/UpdateCustomer" method='POST'>
+                <form action="/UpdateWebhook" method='POST'>
                     <input type="hidden" th:value="${webhook.id}" name="name"/>
                     <input type="submit" value="Update"/>
                 </form>
 
-                <form action="/DeleteCustomer" method='POST'>
-                    <input type="hidden" th:value="${webhook.id}" name="name"/>
+                <form action="/DeleteWebhook" method='POST'>
+                    <input type="hidden" th:value="${webhook.id}" name="id"/>
                     <input type="submit" value="Delete" onclick="getConfirmation()" />
                 </form>
 
