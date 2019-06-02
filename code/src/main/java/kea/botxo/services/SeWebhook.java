@@ -36,7 +36,7 @@ public class SeWebhook {
     }
 
     /**
-     * Updates a specific webhook in the database, via the repository layer
+     * Updates a specific Webhook in the database, via the repository layer
      * @author Andreas, Marcus
      * @param webhook The Webhook to update
      * @return True if at least one row was updated, otherwise false
@@ -46,7 +46,7 @@ public class SeWebhook {
     }
 
     /**
-     * Deletes a specific webhook from the database, via the repository layer
+     * Deletes a specific Webhook from the database, via the repository layer
      * @author Andreas, Marcus
      * @param id The Webhook to delete
      * @return True if at least one row was deleted, otherwise false

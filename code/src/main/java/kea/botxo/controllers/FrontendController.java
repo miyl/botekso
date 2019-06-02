@@ -174,7 +174,8 @@ public class FrontendController implements WebMvcConfigurer {
      */
     //customer formular
     @GetMapping("/CreateCustomer")
-    public String showCustomerForm(Customer customer){
+    public String showCustomerForm(Model model){
+        model.addAttribute("cm", new Customer());
         return "CreateCustomer";
     }
 
@@ -186,11 +187,16 @@ public class FrontendController implements WebMvcConfigurer {
      * @return If successful the list of customers is returned, otherwise the customer form is returned
      */
     @PostMapping("/CreateCustomer")
-    public String checkCustomerInfo(@Valid Customer customer, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
-            return "CreateCustomer";
-        }
+    public String checkCustomerInfo(Model model, @Valid Customer customer, BindingResult bindingResult){
+      if(bindingResult.hasErrors()) { 
+        model.addAttribute("cm", customer);
+        model.addAttribute("bindingResult", bindingResult);
+        return "CreateCustomer"; 
+      }
+      else {
+        seCustomer.add(customer);
         return "redirect:/ListCustomers";
+      }
     }
 
     /**
@@ -328,6 +334,39 @@ public class FrontendController implements WebMvcConfigurer {
     }
 
     /**
+     * Shows the form for adding a new HTTP Request Type
+     * @author Marcus
+     * @param model Contains variables to be passed to the template
+     * @return The form for adding a new HTTP Request Type
+     */
+    @GetMapping("/CreateHttpRequestType")
+    public String showCreateHttpRequestType(Model model) {
+      model.addAttribute("hrt", new HttpRequestType());
+       return "CreateHttpRequestType"; 
+    }
+
+    /**
+     * Validates HTTP Request Type form input and passes it to be inserted into the database if successful, otherwise returning the create form with errors
+     * @author Marcus
+     * @param model Contains variables to be passed to the template
+     * @param httpRequestType The Authentication Type to be added
+     * @param bindingResult For form validation
+     * @return If successful the list of Authentication Types is returned, otherwise the form is returned
+     */
+    @PostMapping("/CreateHttpRequestType")
+    public String createHttpRequestType(Model model, @Valid HttpRequestType httpRequestType, BindingResult bindingResult) {
+      if(bindingResult.hasErrors()) { 
+        model.addAttribute("hrt", httpRequestType);
+        model.addAttribute("bindingResult", bindingResult);
+        return "CreateHttpRequestType"; 
+      }
+      else {
+        seHttpRequestType.add(httpRequestType);
+        return "redirect:/ListHttpRequestTypes";
+      }
+    }
+
+    /**
      * For deleting an HTTP Request Type
      * @author Marcus
      * @param httpRequestType The HTTP Request Type to be deleted
@@ -367,7 +406,7 @@ public class FrontendController implements WebMvcConfigurer {
     }
 
     /**
-     *
+     * Validates Auth Type form input and passes it to be inserted into the database if successful, otherwise returning the create form with errors
      * @author Marcus
      * @param model Contains variables to be passed to the template
      * @param authType The Authentication Type to be added

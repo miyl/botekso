@@ -3,8 +3,7 @@ package kea.botxo.models;
 import javax.validation.constraints.*;
 
 /**
- * Customer Class that handles Customers
- * @Author Andreas, Marcus & Tariq
+ * A model that handles the different customers that BotXO has, that is those who have webhooks in the database, which could include BotXO themselves
  */
 public class Customer {
 

@@ -48,8 +48,9 @@ public class ReHttpRequestType {
      * @param h The HTTP Request Type to add
      * @return True if at least one row was added, otherwise false 
      */
-    public boolean add(String h) {
-      return true;
+    public boolean add(HttpRequestType h) {
+      String sql = "INSERT INTO http_request_types (http_request_type) VALUES (?)";
+      return ( template.update(sql, h.getHttpRequestType() ) != 0 );
     }
   
 }

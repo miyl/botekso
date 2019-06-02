@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <!--/*/ <th:block th:include="fragments/head.html"> </th:block> /*/-->
-    <title>Create Authentication Type</title>
+    <title>Create HTTP Request Type</title>
 </head>
 <body>
 
@@ -10,11 +10,11 @@
 
 
 <!-- Tilføj at password skal bræftes to gange.-->
-<form th:object="${at}" method="POST">
+<form th:object="${hrt}" method="POST">
     <table>
         <tr>
-            <td><input placeholder="AuthType" th:field="*{authType}" /></td>
-            <td th:if="${#fields.hasErrors('authType')}" th:errors="*{authType}">AuthType Error</td>
+            <td><input placeholder="HttpRequestType" th:field="*{httpRequestType}" /></td>
+            <td th:if="${#fields.hasErrors('httpRequestType')}" th:errors="*{httpRequestType}">AuthType Error</td>
         </tr>
         <tr>
             <td><button type="submit">Submit</button></td>

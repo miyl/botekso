@@ -39,7 +39,7 @@ public class SeHttpRequestType {
      * @param h The HTTP Request Type to add
      * @return True if at least one row was added, otherwise false 
      */
-    public boolean add(String h) {
+    public boolean add(HttpRequestType h) {
       return reHttpRequestType.add(h);
     }
   

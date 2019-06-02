@@ -73,7 +73,7 @@ public class ReWebhook {
     }
 
     /**
-     * Updates a specific webhook in the database (Unfinished!)
+     * Updates a specific Webhook in the database (Unfinished!)
      * @author Andreas, Marcus
      * @param webhook The Webhook to update
      * @return True if at least one row was updated, otherwise false
@@ -84,7 +84,7 @@ public class ReWebhook {
     }
 
     /**
-     * Deletes a specific webhook from the database
+     * Deletes a specific Webhook from the database
      * @author Andreas, Marcus
      * @param id The Webhook to delete
      * @return True if at least one row was deleted, otherwise false

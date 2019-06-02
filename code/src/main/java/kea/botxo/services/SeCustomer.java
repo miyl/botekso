@@ -10,8 +10,7 @@ import kea.botxo.repositories.ReCustomer;
 import java.util.List;
 
 /**
- * Customer Service
- * @Author Andreas
+ * The service layer for Customers
  */
 @Service
 public class SeCustomer {
@@ -20,48 +19,47 @@ public class SeCustomer {
     ReCustomer reCustomer;
 
     /**
-     * @Author Andreas
-     * @return Returns an Arraylist of the Customers
-     */
-    public List<Customer> fetchAll(){
-        return reCustomer.fetchAll();
-    }
-
-    /**
-     * @Author Andreas
-     * @param name ID of the customer to be fetched from the database
-     * @return The desired customer
+     * Fetches a specific Customer given by its ID (name) from the database, via the repository layer
+     * @param name The name of the Customer to retrieve
+     * @return The requested Customer
      */
     public Customer fetch(String name) {
       return reCustomer.fetch(name);
     }
 
     /**
-     * @Author Andreas
-     * @param customer The Customer to be added
-     * @Return Returns a list of Customers with the newly added Customer
+     * Fetches a list of all Customers from the database, via the repository layer
+     * @return The  list of all Customers
      */
-    public void addCustomer(Customer customer) {
-        reCustomer.add(customer);
+    public List<Customer> fetchAll(){
+        return reCustomer.fetchAll();
     }
 
     /**
-     * @Author Andreas
-     * @param customer The desired Customer to be updated
-     * @Return The updated Customer on a list of Customers
+     * Updates a specific Customer in the database, via the repository layer
+     * @param customer The Customer to update
      */
-    public void update(Customer customer) {
-        reCustomer.update(customer);
+    public boolean update(Customer customer) {
+        return reCustomer.update(customer);
     }
 
     /**
-     * @Author Andreas
-     * @param name The desired Customer to be deleted
-     * @Return A list of Customers in which the desired Customer is removed
+     * Deletes a specific Customer from the database, via the repository layer
+     * @param name The Customer to delete
      */
-    public void delete(String name) {
-        reCustomer.delete(name);
+    public boolean delete(String name) {
+        return reCustomer.delete(name);
     }
+
+
+    /**
+     * Adds a new Customer to the database, via the repository layer
+     * @param customer The Customer to add
+     */
+    public boolean add(Customer customer) {
+        return reCustomer.add(customer);
+    }
+
 
 
 
