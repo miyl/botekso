@@ -119,8 +119,19 @@ public class FrontendController implements WebMvcConfigurer {
      */
     @GetMapping("/CreateWebhook")
     public String showWebhookForm(Webhook webhook, Model model){
-        //tilføjelse af customers til webhook formular.
-        model.addAttribute("customers", seCustomer.fetchAll());
+        // Fetching lists of all customers, authTypes and httpRequestTypes
+        List<Customer> cs = seCustomer.fetchAll();
+        List<AuthType> ats = seAuthType.fetchAll();
+        List<HttpRequestType> hrts = seHttpRequestType.fetchAll();
+
+        // The template only needs the value corresponding to the primary key within them, not the entire objects, so we extract those
+        List<String> customerNames = cs.stream().map(c -> c.getName()).collect(Collectors.toList());
+        List<String> authTypeValues = ats.stream().map(at -> at.getAuthType()).collect(Collectors.toList());
+        List<String> httpRequestTypeValues = hrts.stream().map(hrt -> hrt.getHttpRequestType()).collect(Collectors.toList());
+
+        model.addAttribute("customerNames", customerNames);
+        model.addAttribute("httpRequestTypeValues", httpRequestTypeValues);
+        model.addAttribute("authTypeValues", authTypeValues);
         return "CreateWebhook";
     }
 
@@ -133,14 +144,35 @@ public class FrontendController implements WebMvcConfigurer {
      * @return If the webhook form was valid the list of webhooks is returned. Otherwise the webhook create form is returned.
      */
     @PostMapping("/CreateWebhook")
-    public String checkWebhookInfo(@Valid Webhook webhook, BindingResult bindingResult, Model model){
-        model.addAttribute("customers", seCustomer.fetchAll());
-        if(bindingResult.hasErrors()){
+    public String checkWebhookInfo(@Valid Webhook webhook, BindingResult bindingResult, @RequestParam("customerName") String customerName, @RequestParam("authType") String authType, @RequestParam("httpRequestType") String httpRequestType, Model model){
+        // Validating that the submitted values actually exist (haven't been tampered with so they're invalid)
+        Customer customer               = seCustomer.fetch(customerName);
+        // AuthType authType               = seAuthType.fetch(authTypeValue);
+        // HttpRequestType httpRequestType = seHttpRequestType.fetch(httpRequestTypeValue);
+        
+        // if(bindingResult.hasErrors() || customer == null || authType == null || httpRequestType == null ){
+        // Setting some values on the webhook so bindingResults hopefully d
+
+        if(bindingResult.hasErrors() || customer == null) {
+            // TODO: It needs to pass in the lists of customerNames, httpRequestTypeValues and authTypeValues again here, in case there are form errors
+            model.addAttribute("bindingResult", bindingResult);
             return "CreateWebhook";
         }
-        seWebhook.add(webhook);
-        return "redirect:/ListWebhooks";
+        else {
+          seWebhook.add(webhook);
+          return "redirect:/ListWebhooks";
+        }
     }
+
+    // @PostMapping("/GenerateApiKey")
+    // public String generateApiKey(@RequestParam("customerName") String customerName) {
+    //   // Check if a Customer actually exists with that name. TODO: Ensure fetch methods actually return null in case of error!
+    //   if ( seCustomer.fetch(customerName) != null ) {
+    //     seApiKey.generate(customerName);
+    //     return "redirect:/ListApiKeys";
+    //   }
+    //   else return "GenerateApiKey";
+    // }
 
     /**
      * For deleting a webhook

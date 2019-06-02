@@ -100,14 +100,14 @@ public class ReWebhook {
      * @param webhook The Webhook to add
      * @return True if at least one row was added, otherwise false
      */
-    public boolean add(Webhook webhook){
+    public boolean add(Webhook w){
         //TODO: skal fixes som er hardcoded.
         //de 3 sidste.
         String sql = "INSERT INTO webhooks" + 
                 "( name, url, body, response_on_success, response_on_error, http_request_type, auth_type, customer_name) VALUES (" +
-                "?, ?, ?, ?, ?, 'POST', 'None', 'Tiger of Sweden');";
+                "?, ?, ?, ?, ?, ?, ?, ?);";
         //template.update returns affected rows.
-        int res = template.update(sql, webhook.getName(), webhook.getUrl(), webhook.getBody(), webhook.getResponseOnSuccess(), webhook.getResponseOnError());
+        int res = template.update( sql, w.getName(), w.getUrl(), w.getBody(), w.getResponseOnSuccess(), w.getResponseOnError(), w.getHttpRequestType(), w.getAuthType(), w.getCustomerName() );
         return (res != 0)? true : false;
 
     }

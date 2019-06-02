@@ -47,10 +47,28 @@
             <tr>
                 <td>Choose Customer:</td>
                 <td>
-                    <select>
-                        <p th:each="customerName : ${customersNames}">
-                            <option th:value="customerName" th:text="${customerName}"></option>
-                        </p>
+                    <select name="customerName">
+                        <option th:each="c : ${customerNames}"
+                                th:value="${c}" th:text="${c}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Choose Auth Type:</td>
+                <td>
+                    <select name="authType">
+                        <Option th:each="a : ${authTypeValues}"
+                                th:value="${a}" th:text="${a}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Choose HTTP Request Type:</td>
+                <td>
+                    <select name="httpRequestType"> <!-- Note to self: These names must match up with their names in webhook, otherwise they're not added to the webhook object in the POST request, and bindResult will see it as invalid -->
+                        <option th:each="h : ${httpRequestTypeValues}"
+                                th:value="${h}" 
+                                th:text="${h}"></option>
                     </select>
                 </td>
             </tr>
