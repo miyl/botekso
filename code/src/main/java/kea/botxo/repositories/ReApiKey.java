@@ -58,7 +58,7 @@ public class ReApiKey {
         for (int i = 0; i < 100; i++) {
             newApiKey.append(possibleCharacters[ran.nextInt(possibleCharacters.length)]);
         }
-        String sql = "INSERT INTO api_keys (key, customer_name) VALUES (?, ?)";
+        String sql = "INSERT INTO api_keys (`key`, customer_name) VALUES (?, ?)";
         return (template.update(sql, newApiKey, customerName) != 0);
     }
 

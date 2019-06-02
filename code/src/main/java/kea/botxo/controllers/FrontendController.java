@@ -28,6 +28,9 @@ import kea.botxo.services.SeApiKey;
 
 import javax.validation.Valid;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * The Frontend Controller
  */
@@ -283,33 +286,40 @@ public class FrontendController implements WebMvcConfigurer {
      */
     @GetMapping("/ListApiKeys")
     public String showListApiKeys(Model model){
-        // Udkommenteret indtil metoden er lavet
         model.addAttribute("apiKeys", seApiKey.fetchAll());
         return "ListApiKeys";
     }
 
     /**
      * For generating an API-Key
-     * @author Esben
+     * @author Esben, Marcus
      * @param model Contains variables to be passed to the template
      * @return The generate API-Key form, for selecting which Customer the API-Key should be created for
      */
-    @GetMapping("/GenerateApiKeyForm")
+    @GetMapping("/GenerateApiKey")
     public String generateApiKeyForm(Model model) {
-      model.addAttribute("customers", seCustomer.fetchAll());
-      return "GenerateApiKeyForm";
+      // Convert the list of Customer objects into a list of customer names, as that's what we need
+      List<Customer> cs = seCustomer.fetchAll();
+      List<String> customerNames = cs.stream().map(c -> c.getName()).collect(Collectors.toList());
+
+      model.addAttribute("cs", customerNames); // Technically it only needs customer names...
+      return "GenerateApiKey";
     }
 
     /**
      * Receives the selected user from the Generate API Key form
-     * @author Esben
+     * @author Esben, Marcus
      * @param customerName The selected user
      * @return The list of API-Keys
      */
     @PostMapping("/GenerateApiKey")
     public String generateApiKey(@RequestParam("customerName") String customerName) {
-      seApiKey.generate(customerName);
-      return "redirect:/ListApiKeys";
+      // Check if a Customer actually exists with that name. TODO: Ensure fetch methods actually return null in case of error!
+      if ( seCustomer.fetch(customerName) != null ) {
+        seApiKey.generate(customerName);
+        return "redirect:/ListApiKeys";
+      }
+      else return "GenerateApiKey";
     }
 
     /**
