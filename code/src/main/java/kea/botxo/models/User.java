@@ -5,7 +5,8 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
- *
+ * Class that handles Users
+ * @Author Tariq & Andreas
  */
 public class User {
 

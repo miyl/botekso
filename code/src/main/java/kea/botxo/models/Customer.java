@@ -3,7 +3,8 @@ package kea.botxo.models;
 import javax.validation.constraints.*;
 
 /**
- *
+ * Customer Class that handles Customers
+ * @Author Andreas, Marcus & Tariq
  */
 public class Customer {
 

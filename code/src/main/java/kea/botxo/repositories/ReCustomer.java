@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Customer Repository
+ * @Author Andreas, Marcus & Tariq
  */
 @Repository
 public class ReCustomer {
@@ -21,9 +22,9 @@ public class ReCustomer {
     JdbcTemplate template;
 
     /**
-     *
-     * @param name
-     * @return
+     * @Author Andreas
+     * @param name The desired Customer to be fetched from the Database
+     * @return The desired Customer
      */
     public Customer fetch(String name){
 
@@ -34,8 +35,8 @@ public class ReCustomer {
     }
 
     /**
-     *
-     * @return
+     * @Andreas
+     * @return An arraylist of all Customers fetched from the Database
      */
     public List<Customer> fetchAll(){
 
@@ -43,39 +44,21 @@ public class ReCustomer {
         String sql = "SELECT * FROM customers";
         RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
         return template.query(sql, rowMapper);
-
-        ////dummy data
-        //List<Customer> customerList = new ArrayList<>();
-
-        //Customer customer1 = new Customer();
-        //customer1.setEmail(   "hans@gmail.dk");
-        //customer1.setName("Hans jensen");
-        //customer1.setTel("23232323");
-
-        //Customer customer2 = new Customer();
-        //customer2.setTel("32323232");
-        //customer2.setName("BenteOlsen");
-        //customer2.setEmail("Bente@hotmail.com");
-
-        //customerList.add(customer1);
-        //customerList.add(customer2);
-        //return customerList;
-
     }
 
     /**
-     *
-     * @param customer
-     * @return
+     * @Authr Andreas
+     * @param customer The desired customer to be updated
+     * @return The updated customer in a list of Customers
      */
     public boolean update(Customer customer){
         return true;
     }
 
     /**
-     *
-     * @param name
-     * @return
+     * @Author Tariq & Marcus
+     * @param name The Customer to be deleted from the database
+     * @return A list of Customers with the specific Customer deleted
      */
     public boolean delete(String name) {
         String sql = "DELETE FROM customers WHERE name=?";
@@ -90,9 +73,9 @@ public class ReCustomer {
     }
 
     /**
-     *
-     * @param customer
-     * @return
+     * @Author Andreas
+     * @param customer ID of customer to be added
+     * @return A list with the newly added Customer
      */
     public boolean add(Customer customer){
         return true;
