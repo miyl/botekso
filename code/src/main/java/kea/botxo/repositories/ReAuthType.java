@@ -28,8 +28,9 @@ public class ReAuthType {
       return ( template.update(sql, a) != 0 );
     }
 
-    public boolean add(String a) {
-      return true;
+    public boolean add(AuthType a) {
+      String sql = "INSERT INTO auth_types (auth_type) VALUES (?)";
+      return ( template.update(sql, a.getAuthType() ) != 0 );
     }
 
 }

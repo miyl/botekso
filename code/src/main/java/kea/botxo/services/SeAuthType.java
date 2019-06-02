@@ -22,7 +22,7 @@ public class SeAuthType {
       return reAuthType.delete(a);
     }
 
-    public boolean add(String a) {
+    public boolean add(AuthType a) {
       return reAuthType.add(a);
     }
   

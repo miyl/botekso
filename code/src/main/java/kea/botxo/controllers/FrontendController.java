@@ -221,6 +221,25 @@ public class FrontendController implements WebMvcConfigurer {
         return "ListAuthTypes";
     }
 
+    @GetMapping("/CreateAuthType")
+    public String showCreateAuthType(Model model) {
+      model.addAttribute("at", new AuthType());
+       return "CreateAuthType"; 
+    }
+
+    @PostMapping("/CreateAuthType")
+    public String createAuthType(Model model, @Valid AuthType authType, BindingResult bindingResult) {
+      if(bindingResult.hasErrors()) { 
+        model.addAttribute("at", authType);
+        model.addAttribute("bindingResult", bindingResult);
+        return "CreateAuthType"; 
+      }
+      else {
+        seAuthType.add(authType);
+        return "redirect:/ListAuthTypes";
+      }
+    }
+
     @PostMapping("/DeleteAuthType")
     public String deleteAuthType (@RequestParam("authType") String authType){
         seAuthType.delete(authType);
