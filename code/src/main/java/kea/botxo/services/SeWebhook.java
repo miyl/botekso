@@ -8,7 +8,7 @@ import kea.botxo.repositories.ReWebhook;
 import java.util.List;
 
 /**
- *
+ * The service layer for Webhooks
  */
 @Service
 public class SeWebhook {
@@ -17,47 +17,49 @@ public class SeWebhook {
     ReWebhook reWebhook;
 
     /**
-     *
-     * @param id
-     * @return
+     * Fetches a specific Webhook given by its ID from the database, via the repository layer
+     * @author Andreas, Marcus
+     * @param id The Webhook to retrieve
+     * @return The requested Webhook
      */
     public Webhook fetch(int id){
         return reWebhook.fetch(id);
     }
 
     /**
-     *
-     * @return
+     * Fetches a list of all Webhooks from the database, via the repository layer
+     * @author Andreas, Marcus
+     * @return The list of all Webhooks
      */
     public List<Webhook> fetchAll(){
         return reWebhook.fetchAll();
     }
 
     /**
-     *
-     * @param webhook
-     * @return
+     * Updates a specific webhook in the database, via the repository layer
+     * @author Andreas, Marcus
+     * @param webhook The Webhook to update
+     * @return True if at least one row was updated, otherwise false
      */
     public boolean update(Webhook webhook){
-        if(reWebhook.update(webhook)){
-            return true;
-        }
-        return false;
+        return reWebhook.update(webhook);
     }
 
     /**
-     *
-     * @param id
-     * @return
+     * Deletes a specific webhook from the database, via the repository layer
+     * @author Andreas, Marcus
+     * @param id The Webhook to delete
+     * @return True if at least one row was deleted, otherwise false
      */
     public boolean delete(int id){
         return reWebhook.delete(id);
     }
 
     /**
-     *
-     * @param webhook
-     * @return
+     * Adds a new Webhook to the database, via the repository layer
+     * @author Andreas, Marcus
+     * @param webhook The Webhook to add
+     * @return True if at least one row was added, otherwise false
      */
     public boolean add(Webhook webhook){
         return reWebhook.add(webhook);

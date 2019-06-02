@@ -1,5 +1,8 @@
 package kea.botxo.testserver.models;
 
+/**
+ * The structure of the response object sent back to the HTTP client making the request to this API
+ */
 public class Response {
 
     private String value;

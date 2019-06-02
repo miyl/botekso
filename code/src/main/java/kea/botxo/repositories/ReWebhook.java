@@ -16,7 +16,7 @@ import java.util.Map;
 import java.sql.Types;
 
 /**
- *
+ * The repository (database connection) for Webhooks
  */
 @Repository
 public class ReWebhook {
@@ -25,9 +25,10 @@ public class ReWebhook {
     JdbcTemplate template;
 
     /**
-     *
-     * @param id
-     * @return
+     * Fetches a specific Webhook given by its ID from the database
+     * @author Andreas, Marcus
+     * @param id The webhook to retrieve
+     * @return The requested webhook
      */
     public Webhook fetch(int id){
 
@@ -38,8 +39,9 @@ public class ReWebhook {
     }
 
     /**
-     *
-     * @return
+     * Fetches a list of all Webhooks from the database
+     * @author Andreas, Marcus
+     * @return The list of all Webhooks
      */
     public List<Webhook> fetchAll(){
 
@@ -71,9 +73,10 @@ public class ReWebhook {
     }
 
     /**
-     *
-     * @param webhook
-     * @return
+     * Updates a specific webhook in the database (Unfinished!)
+     * @author Andreas, Marcus
+     * @param webhook The Webhook to update
+     * @return True if at least one row was updated, otherwise false
      */
     public boolean update(Webhook webhook){
         //update
@@ -81,9 +84,10 @@ public class ReWebhook {
     }
 
     /**
-     *
-     * @param id
-     * @return
+     * Deletes a specific webhook from the database
+     * @author Andreas, Marcus
+     * @param id The Webhook to delete
+     * @return True if at least one row was deleted, otherwise false
      */
     public boolean delete(int id){
         String sql = "DELETE FROM webhooks WHERE id=?";
@@ -91,9 +95,10 @@ public class ReWebhook {
     }
 
     /**
-     *
-     * @param webhook
-     * @return
+     * Adds a new Webhook to the database
+     * @author Andreas, Marcus
+     * @param webhook The Webhook to add
+     * @return True if at least one row was added, otherwise false
      */
     public boolean add(Webhook webhook){
         //TODO: skal fixes som er hardcoded.

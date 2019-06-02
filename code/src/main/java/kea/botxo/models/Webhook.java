@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.URL;
 import javax.validation.constraints.*;
 
 /**
- *
+ * The model representing our main data type: A Webhook.
  */
 public class Webhook {
 
@@ -58,7 +58,7 @@ public class Webhook {
     @NotNull
     private String authType;
 
-    public Webhook(){}
+    // public Webhook(){}
 
     // public Webhook(int id, String name, String url, String body, int responseOnSuccess, int responseOnError, Customer customer) {
     //   this.id = id;

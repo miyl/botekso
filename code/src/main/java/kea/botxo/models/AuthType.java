@@ -3,7 +3,7 @@ package kea.botxo.models;
 import javax.validation.constraints.*;
 
 /**
- *
+ * A model that handles the different possible authentication types the third party API could be expecting.
  */
 public class AuthType {
 

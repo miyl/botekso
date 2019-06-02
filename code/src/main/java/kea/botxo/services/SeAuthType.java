@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * The service layer for Auth Types
  */
 @Service
 public class SeAuthType {
@@ -18,26 +18,29 @@ public class SeAuthType {
     ReAuthType reAuthType;
 
     /**
-     *
-     * @return
+     * Fetches a list of all Auth Types from the database, via the repository layer
+     * @author Marcus
+     * @return The list of all Auth Types
      */
     public List<AuthType> fetchAll() {
       return reAuthType.fetchAll();
     }
 
     /**
-     *
-     * @param a
-     * @return
+     * Deletes a specific Auth Type from the database, via the repository layer
+     * @author Marcus
+     * @param a The Auth Type to delete
+     * @return True if at least one row was deleted, otherwise false 
      */
     public boolean delete(String a) {
       return reAuthType.delete(a);
     }
 
     /**
-     *
-     * @param a
-     * @return
+     * Adds a new Auth Type to the database, via the repository layer
+     * @author Marcus
+     * @param a The AuthType to add
+     * @return True if at least one row was added, otherwise false
      */
     public boolean add(AuthType a) {
       return reAuthType.add(a);

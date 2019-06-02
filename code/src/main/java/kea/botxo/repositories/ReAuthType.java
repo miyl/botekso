@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * The repository (database connection) for Auth Types
  */
 @Repository
 public class ReAuthType {
@@ -20,8 +20,9 @@ public class ReAuthType {
     JdbcTemplate template;
 
     /**
-     *
-     * @return
+     * Fetches a list of all Auth Types from the database
+     * @author Marcus
+     * @return The list of all Auth Types
      */
     public List<AuthType> fetchAll() {
 
@@ -31,9 +32,10 @@ public class ReAuthType {
     }
 
     /**
-     *
-     * @param a
-     * @return
+     * Deletes a specific Auth Type from the database
+     * @author Marcus
+     * @param a The Auth Type to delete
+     * @return True if at least one row was deleted, otherwise false
      */
     public boolean delete(String a) {
       String sql = "DELETE FROM auth_types WHERE auth_type=?";
@@ -41,9 +43,10 @@ public class ReAuthType {
     }
 
     /**
-     *
-     * @param a
-     * @return
+     * Adds a new Auth Type to the database
+     * @author Marcus
+     * @param a The Auth Type to add
+     * @return True if at least one row was added, otherwise false
      */
     public boolean add(AuthType a) {
       String sql = "INSERT INTO auth_types (auth_type) VALUES (?)";
