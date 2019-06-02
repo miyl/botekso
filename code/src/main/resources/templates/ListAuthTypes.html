@@ -29,13 +29,13 @@
         </thead>
 
         <tbody>
-        <tr th:each="anAuthType : ${authTypes}">
-            <td th:text="${anAuthType.authType}"> />
+        <tr th:each="anAuthType : ${authTypes}"  />
+            <td th:text="${anAuthType.authType}" />
             <td>
-                <form action="/UpdateAuthType" method='POST'>
-                    <input type="hidden" th:value="${anAuthType.authType}" name="name"/>
-                    <input type="submit" value="Update"/>
-                </form>
+                <!-- <form action="/UpdateAuthType" method='POST'> -->
+                <!--     <input type="hidden" th:value="${anAuthType.authType}" name="name"/> -->
+                <!--     <input type="submit" value="Update"/> -->
+                <!-- </form> -->
 
                 <form action="/DeleteAuthType" method='POST'>
                     <input type="hidden" th:value="${anAuthType.authType}" name="authType"/>

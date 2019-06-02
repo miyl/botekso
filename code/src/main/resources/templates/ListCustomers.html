@@ -36,8 +36,8 @@
             <!--                      employees comes from our Java code-->
             <tr th:each="customer : ${customers}">
                 <td th:text="${customer.name}"            />
-                <td th:text="${customer.email}">          />
-                <td th:text="${customer.tel}">          />
+                <td th:text="${customer.email}"          />
+                <td th:text="${customer.tel}"          />
                 <td>
                     <form action="/UpdateCustomer" method='POST'>
                         <input type="hidden" th:value="${customer.name}" name="name"/>

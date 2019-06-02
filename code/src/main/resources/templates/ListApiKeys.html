@@ -31,13 +31,13 @@
 
         <tbody>
         <tr th:each="apiKey : ${apiKeys}">
-            <td th:text="${apiKey.customerName}"> />
-            <td th:text="${apiKey.key}">          />
+            <td th:text="${apiKey.customerName}" />
+            <td th:text="${apiKey.key}"          />
             <td>
-                <form action="/UpdateAPIKey" method='POST'>
-                    <input type="hidden" th:value="${apiKey.key}" name="name"/>
-                    <input type="submit" value="Update"/>
-                </form>
+                <!-- <form action="/UpdateAPIKey" method='POST'> -->
+                <!--     <input type="hidden" th:value="${apiKey.key}" name="name"/> -->
+                <!--     <input type="submit" value="Update"/> -->
+                <!-- </form> -->
 
                 <form action="/DeleteApiKey" method='POST'>
                     <input type="hidden" th:value="${apiKey.key}" name="name"/>

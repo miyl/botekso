@@ -40,14 +40,14 @@
         <!-- tempEmployee = Loop parameter-->
         <!--                  : = Loops over list of employees-->
         <!--                      employees comes from our Java code-->
-        <tr th:each="webhook : ${webhooks}">
-            <td th:text="${webhook.id}"> />
+        <tr th:each="webhook : ${webhooks}"/>
+            <td th:text="${webhook.id}"               />
             <td th:text="${webhook.name}"             />
             <td th:text="${webhook.customerName}"     />
-            <td th:text="${webhook.url}">             />
-            <td th:text="${webhook.body}">            />
+            <td th:text="${webhook.url}"              />
+            <td th:text="${webhook.body}"             />
             <td th:text="${webhook.responseOnSuccess}"/>
-            <td th:text="${webhook.responseOnError}"> />
+            <td th:text="${webhook.responseOnError}"  />
             <td th:text="${webhook.authType}"         />
             <td th:text="${webhook.httpRequestType}"  />
 

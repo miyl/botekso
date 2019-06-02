@@ -25,13 +25,13 @@
             </thead>
 
             <tbody>
-            <tr th:each="anHttpRequestType : ${httpRequestTypes}">
-                <td th:text="${anHttpRequestType.httpRequestType}"> />
+            <tr th:each="anHttpRequestType : ${httpRequestTypes}"  />
+                <td th:text="${anHttpRequestType.httpRequestType}" />
                 <td>
-                    <form action="/UpdateHttpRequestType" method='POST'>
-                        <input type="hidden" th:value="${anHttpRequestType.httpRequestType}" name="httpRequestType"/>
-                        <input type="submit" value="Update"/>
-                    </form>
+                    <!-- <form action="/UpdateHttpRequestType" method='POST'> -->
+                    <!--     <input type="hidden" th:value="${anHttpRequestType.httpRequestType}" name="httpRequestType"/> -->
+                    <!--     <input type="submit" value="Update"/> -->
+                    <!-- </form> -->
 
                     <form style="display: inline;" action="/DeleteHttpRequestType" method='POST'>
                         <input type="hidden" th:value="${anHttpRequestType.httpRequestType}" name="httpRequestType"/>
