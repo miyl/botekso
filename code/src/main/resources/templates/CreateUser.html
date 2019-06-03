@@ -24,11 +24,12 @@
             <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
         </tr>
         <tr>
+            <td> Access Level:</td>
             <td>
             <select th:field="*{accessLevel}">
-                <option th:value="1">Access Level 1</option>
-                <option th:value="2">Access Level 2</option>
-                <option th:value="3">Access Level 3</option>
+                <option th:value="1">1</option>
+                <option th:value="2">2</option>
+                <option th:value="3">3</option>
             </select>
             </td>
         </tr>
