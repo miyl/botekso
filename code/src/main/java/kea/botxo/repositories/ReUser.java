@@ -19,7 +19,7 @@ public class ReUser {
 
     /**
      * Used to fetch a single User from database
-     * @Author Tariq
+     * @author Tariq
      * @param name Works as an ID in order to fetch a specific User
      * @return A specific User
      */
@@ -32,7 +32,7 @@ public class ReUser {
 
     /**
      * Used to fetch all users from database
-     * @Author Tariq
+     * @author Tariq
      * @return A list of all Users
      */
     public List<User> fetchAll() {
@@ -47,7 +47,7 @@ public class ReUser {
 
     /**
      * Used to update User information in the database
-     * @Author Tariq
+     * @author Tariq
      * @param user The desired User to be updated
      * @return Returns a list with the updated User on
      */
@@ -59,7 +59,7 @@ public class ReUser {
 
     /**
      * Used to delete User from Database
-     * @Author Tariq
+     * @author Tariq
      * @param name Name of the User in the Database to be deleted.
      * @return Return the list of Users when completed
      */
@@ -78,7 +78,7 @@ public class ReUser {
 
     /**
      * Used to add new users to the database
-     * @Author Tariq
+     * @author Tariq
      * @param user User to be added to the database.
      * @return Returns a list with the added User
      */

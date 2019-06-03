@@ -69,7 +69,7 @@ public class ReCustomer {
      * Updates a specific Customer in the database
      * @author Andreas, Marcus, Tariq
      * @param customer The Customer to update
-     * @return
+     * @return True if at least one row was added, otherwise false
      */
     public boolean update(Customer customer){
         return true;
@@ -96,7 +96,7 @@ public class ReCustomer {
     /**
      * Adds a new Customer to the database
      * @author Andreas, Marcus
-     * @param customer The Customer to add
+     * @param c The Customer to add
      * @return True if at least one row was added, otherwise false
      */
     public boolean add(Customer c){

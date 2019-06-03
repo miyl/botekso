@@ -4,7 +4,7 @@ import javax.validation.constraints.*;
 
 /**
  * API-Key klasse
- * @Author Esben
+ * @author Esben
  */
 public class ApiKey {
 

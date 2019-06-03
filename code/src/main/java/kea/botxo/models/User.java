@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 /**
  * Class that handles Users
- * @Author Tariq & Andreas
+ * @author Tariq, Andreas
  */
 public class User {
 

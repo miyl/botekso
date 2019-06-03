@@ -75,10 +75,10 @@ public class ReWebhook {
     /**
      * Updates a specific Webhook in the database (Unfinished!)
      * @author Andreas, Marcus
-     * @param webhook The Webhook to update
+     * @param w The Webhook to update
      * @return True if at least one row was updated, otherwise false
      */
-    public boolean update(Webhook webhook){
+    public boolean update(Webhook w){
         //update
         return true;
     }
@@ -97,7 +97,7 @@ public class ReWebhook {
     /**
      * Adds a new Webhook to the database
      * @author Andreas, Marcus
-     * @param webhook The Webhook to add
+     * @param w The Webhook to add
      * @return True if at least one row was added, otherwise false
      */
     public boolean add(Webhook w){

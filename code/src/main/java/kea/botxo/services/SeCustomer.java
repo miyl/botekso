@@ -50,6 +50,7 @@ public class SeCustomer {
     /**
      * Updates a specific Customer in the database, via the repository layer
      * @param customer The Customer to update
+     * @return True if at least one row was added, otherwise false
      */
     public boolean update(Customer customer) {
         return reCustomer.update(customer);
@@ -58,6 +59,7 @@ public class SeCustomer {
     /**
      * Deletes a specific Customer from the database, via the repository layer
      * @param name The Customer to delete
+     * @return True if at least one row was added, otherwise false
      */
     public boolean delete(String name) {
         return reCustomer.delete(name);
@@ -67,12 +69,10 @@ public class SeCustomer {
     /**
      * Adds a new Customer to the database, via the repository layer
      * @param customer The Customer to add
+     * @return True if at least one row was added, otherwise false
      */
     public boolean add(Customer customer) {
         return reCustomer.add(customer);
     }
-
-
-
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * User Service
- * @Author Tariq
+ * @author Tariq
  */
 @Service
 public class SeUser {
@@ -17,7 +17,7 @@ public class SeUser {
     ReUser reUser;
 
     /**
-     * @Author Tariq
+     * @author Tariq
      * @param name Fetch a specific User with the PK Name
      * @return Returns a user
      */
@@ -26,25 +26,24 @@ public class SeUser {
     }
 
     /**
-     * @Author Tariq
+     * @author Tariq
      * @return Returns an Arraylist of all users
-     * @Return Returns a list of all Customers
      */
     public List<User> fetchAll() {
         return reUser.fetchAll();
     }
 
     /**
-     * @Author Tariq
+     * @author Tariq
      * @param user The user to be added to the Database
-     * @Return List of Users with the new User added to it
+     * @return List of Users with the new User added to it
      */
     public boolean add(User user) {
         return reUser.add(user);
     }
 
     /**
-     * @Author Tariq
+     * @author Tariq
      * @param user Takes a User instead of Name because the Update
      *             method has to insert data into the Database
      * @return The list of Users with the updated User
@@ -55,16 +54,16 @@ public class SeUser {
     }
 
     /**
-     * @Author Tariq
+     * @author Tariq
      * @param name Works as an ID to the use which is to be deleted
-     * @Return User list with the User removed
+     * @return User list with the User removed
      */
     public boolean delete(String name) {
         return reUser.delete(name);
     }
 
     /**
-     * @Author Tariq
+     * @author Tariq
      * @param name Uses name to validate User
      * @param password Validates the password of the User
      * @return Returns validation of the User based on Name and Password

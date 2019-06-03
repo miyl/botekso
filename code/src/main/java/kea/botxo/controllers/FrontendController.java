@@ -131,6 +131,9 @@ public class FrontendController implements WebMvcConfigurer {
      * @param webhook The webhook object is passed in for validation purposes
      * @param bindingResult Used for form validation
      * @param model Contains variables to be passed to the template
+     * @param customerName The name of the Customer for the Webhook
+     * @param authType The name of the Auth Type for the Webhook
+     * @param httpRequestType The name of the HTTP Request Type for the Webhook
      * @return If the webhook form was valid the list of webhooks is returned. Otherwise the webhook create form is returned.
      */
     @PostMapping("/CreateWebhook")
@@ -186,7 +189,7 @@ public class FrontendController implements WebMvcConfigurer {
     /**
      * Shows the add customer form
      * @author Marcus
-     * @param customer The customer object is passed in for validation purposes
+     * @param model Contains variables to be passed to the template
      * @return The customer form
      */
     //customer formular
@@ -199,6 +202,7 @@ public class FrontendController implements WebMvcConfigurer {
     /**
      * Receives the form input from the template for creating a customer
      * @author Marcus
+     * @param model Contains variables to be passed to the template
      * @param customer The customer object is passed in for validation purposes
      * @param bindingResult Used for validation
      * @return If successful the list of customers is returned, otherwise the customer form is returned
@@ -247,7 +251,7 @@ public class FrontendController implements WebMvcConfigurer {
     /**
      * The create user form
      * @author Tariq
-     * @param user
+     * @param model Contains variables to be passed to the template
      * @return The create User form
      */
     //vis create user formular
@@ -260,9 +264,10 @@ public class FrontendController implements WebMvcConfigurer {
     /**
      * Receives the details filled into the create User form
      * @author Tariq, Marcus
+     * @param model Contains variables to be passed to the template
      * @param user The user to be created
      * @param bindingResult Used for validation
-     * @return
+     * @return If valid the List of Users is returned, otherwise the Create User form is displayed again
      */
     @PostMapping("/CreateUser")
     public String checkUserInfo(Model model, @Valid User user, BindingResult bindingResult){
@@ -352,7 +357,7 @@ public class FrontendController implements WebMvcConfigurer {
      * Shows the list of HTTP Request Types
      * @author Marcus
      * @param model Contains variables to be passed to the template
-     * @return
+     * @return The List of HTTP Request Types
      */
     @GetMapping("/ListHttpRequestTypes")
     public String showListHttpRequestTypes(Model model){
