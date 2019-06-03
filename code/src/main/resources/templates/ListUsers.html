@@ -37,8 +37,8 @@
         <!--                  : = Loops over list of employees-->
         <!--                      employees comes from our Java code-->
         <tr th:each="user : ${users}">
-            <td th:text="${user.name}"            />
-            <td th:text="${user.accessLevel}">    />
+          <td th:text="${user.name}"           ></td>
+          <td th:text="${user.accessLevel}"    ></td>
             <td>
 
             <form action="/UpdateeUser" method='POST'>

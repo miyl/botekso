@@ -29,7 +29,6 @@ import kea.botxo.services.SeApiKey;
 import javax.validation.Valid;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * The Frontend Controller
@@ -119,19 +118,10 @@ public class FrontendController implements WebMvcConfigurer {
      */
     @GetMapping("/CreateWebhook")
     public String showWebhookForm(Webhook webhook, Model model){
-        // Fetching lists of all customers, authTypes and httpRequestTypes
-        List<Customer> cs = seCustomer.fetchAll();
-        List<AuthType> ats = seAuthType.fetchAll();
-        List<HttpRequestType> hrts = seHttpRequestType.fetchAll();
 
-        // The template only needs the value corresponding to the primary key within them, not the entire objects, so we extract those
-        List<String> customerNames = cs.stream().map(c -> c.getName()).collect(Collectors.toList());
-        List<String> authTypeValues = ats.stream().map(at -> at.getAuthType()).collect(Collectors.toList());
-        List<String> httpRequestTypeValues = hrts.stream().map(hrt -> hrt.getHttpRequestType()).collect(Collectors.toList());
-
-        model.addAttribute("customerNames", customerNames);
-        model.addAttribute("httpRequestTypeValues", httpRequestTypeValues);
-        model.addAttribute("authTypeValues", authTypeValues);
+        model.addAttribute( "customerNames", seCustomer.fetchAllCustomerNames() );
+        model.addAttribute( "httpRequestTypeValues", seHttpRequestType.fetchAllHttpRequestValues() );
+        model.addAttribute( "authTypeValues", seAuthType.fetchAllAuthTypeValues() );
         return "CreateWebhook";
     }
 
@@ -151,11 +141,13 @@ public class FrontendController implements WebMvcConfigurer {
         // HttpRequestType httpRequestType = seHttpRequestType.fetch(httpRequestTypeValue);
         
         // if(bindingResult.hasErrors() || customer == null || authType == null || httpRequestType == null ){
-        // Setting some values on the webhook so bindingResults hopefully d
 
         if(bindingResult.hasErrors() || customer == null) {
-            // TODO: It needs to pass in the lists of customerNames, httpRequestTypeValues and authTypeValues again here, in case there are form errors
+            // It needs to pass in the lists of customerNames, httpRequestTypeValues and authTypeValues again here, in case there are form errors
             model.addAttribute("bindingResult", bindingResult);
+            model.addAttribute("customerNames", seCustomer.fetchAllCustomerNames());
+            model.addAttribute("httpRequestTypeValues", seHttpRequestType.fetchAllHttpRequestValues());
+            model.addAttribute("authTypeValues", seAuthType.fetchAllAuthTypeValues());
             return "CreateWebhook";
         }
         else {
@@ -163,16 +155,6 @@ public class FrontendController implements WebMvcConfigurer {
           return "redirect:/ListWebhooks";
         }
     }
-
-    // @PostMapping("/GenerateApiKey")
-    // public String generateApiKey(@RequestParam("customerName") String customerName) {
-    //   // Check if a Customer actually exists with that name. TODO: Ensure fetch methods actually return null in case of error!
-    //   if ( seCustomer.fetch(customerName) != null ) {
-    //     seApiKey.generate(customerName);
-    //     return "redirect:/ListApiKeys";
-    //   }
-    //   else return "GenerateApiKey";
-    // }
 
     /**
      * For deleting a webhook
@@ -330,11 +312,8 @@ public class FrontendController implements WebMvcConfigurer {
      */
     @GetMapping("/GenerateApiKey")
     public String generateApiKeyForm(Model model) {
-      // Convert the list of Customer objects into a list of customer names, as that's what we need
-      List<Customer> cs = seCustomer.fetchAll();
-      List<String> customerNames = cs.stream().map(c -> c.getName()).collect(Collectors.toList());
 
-      model.addAttribute("cs", customerNames); // Technically it only needs customer names...
+      model.addAttribute("cs", seCustomer.fetchAllCustomerNames());
       return "GenerateApiKey";
     }
 

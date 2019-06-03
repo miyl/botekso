@@ -7,6 +7,7 @@ import kea.botxo.repositories.ReAuthType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * The service layer for Auth Types
@@ -25,6 +26,15 @@ public class SeAuthType {
     public List<AuthType> fetchAll() {
       return reAuthType.fetchAll();
     }
+
+  /**
+   * Fetches a list of all Auth Type values via repository
+   * @author Marcus
+   * @return List of all Auth Type values
+   */
+  public List<String> fetchAllAuthTypeValues() {
+    return reAuthType.fetchAll().stream().map(atv -> atv.getAuthType()).collect(Collectors.toList());
+  }
 
     /**
      * Deletes a specific Auth Type from the database, via the repository layer

@@ -35,9 +35,9 @@
             <!--                  : = Loops over list of employees-->
             <!--                      employees comes from our Java code-->
             <tr th:each="customer : ${customers}">
-                <td th:text="${customer.name}"            />
-                <td th:text="${customer.email}"          />
-                <td th:text="${customer.tel}"          />
+                  <td th:text="${customer.name}"            ></td>
+                  <td th:text="${customer.email}"          ></td>
+                  <td th:text="${customer.tel}"          ></td>
                 <td>
                     <form action="/UpdateCustomer" method='POST'>
                         <input type="hidden" th:value="${customer.name}" name="name"/>

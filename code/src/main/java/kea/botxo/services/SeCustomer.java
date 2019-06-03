@@ -8,6 +8,7 @@ import kea.botxo.models.Customer;
 import kea.botxo.repositories.ReCustomer;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * The service layer for Customers
@@ -34,6 +35,17 @@ public class SeCustomer {
     public List<Customer> fetchAll(){
         return reCustomer.fetchAll();
     }
+
+  /**
+   * Fetches a list of all Customer names via repository
+   * @author Marcus
+   * @return List of all Customer names
+   */
+  public List<String> fetchAllCustomerNames() {
+
+    return fetchAll().stream().map(c -> c.getName()).collect(Collectors.toList());
+  }
+
 
     /**
      * Updates a specific Customer in the database, via the repository layer

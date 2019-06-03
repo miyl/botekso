@@ -25,8 +25,8 @@
             </thead>
 
             <tbody>
-            <tr th:each="anHttpRequestType : ${httpRequestTypes}"  />
-                <td th:text="${anHttpRequestType.httpRequestType}" />
+            <tr th:each="anHttpRequestType : ${httpRequestTypes}"  >
+              <td th:text="${anHttpRequestType.httpRequestType}" ></td>
                 <td>
                     <!-- <form action="/UpdateHttpRequestType" method='POST'> -->
                     <!--     <input type="hidden" th:value="${anHttpRequestType.httpRequestType}" name="httpRequestType"/> -->

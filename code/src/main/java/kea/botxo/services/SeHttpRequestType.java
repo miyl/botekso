@@ -7,6 +7,7 @@ import kea.botxo.repositories.ReHttpRequestType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * The service layer for Webhooks
@@ -23,6 +24,16 @@ public class SeHttpRequestType {
      */
     public List<HttpRequestType> fetchAll() {
       return reHttpRequestType.fetchAll();
+    }
+
+    /**
+     * Fetches a list of all HTTP Request Type values via repository
+     * @author Marcus
+     * @return List of all HTTP Request Type values
+     */
+    public List<String> fetchAllHttpRequestValues() {
+
+      return fetchAll().stream().map(hrv -> hrv.getHttpRequestType()).collect(Collectors.toList());
     }
 
     /**
