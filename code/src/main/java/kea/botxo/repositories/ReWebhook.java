@@ -11,9 +11,6 @@ import kea.botxo.models.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
-import java.sql.Types;
 
 /**
  * The repository (database connection) for Webhooks
@@ -79,7 +76,6 @@ public class ReWebhook {
      * @return True if at least one row was updated, otherwise false
      */
     public boolean update(Webhook w){
-        //update
         return true;
     }
 
@@ -108,7 +104,7 @@ public class ReWebhook {
                 "?, ?, ?, ?, ?, ?, ?, ?);";
         //template.update returns affected rows.
         int res = template.update( sql, w.getName(), w.getUrl(), w.getBody(), w.getResponseOnSuccess(), w.getResponseOnError(), w.getHttpRequestType(), w.getAuthType(), w.getCustomerName() );
-        return (res != 0)? true : false;
+        return (res != 0);
 
     }
 }

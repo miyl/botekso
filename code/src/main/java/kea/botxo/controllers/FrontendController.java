@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -27,8 +26,6 @@ import kea.botxo.services.SeHttpRequestType;
 import kea.botxo.services.SeApiKey;
 
 import javax.validation.Valid;
-
-import java.util.List;
 
 /**
  * The Frontend Controller
@@ -151,6 +148,7 @@ public class FrontendController implements WebMvcConfigurer {
             model.addAttribute("customerNames", seCustomer.fetchAllCustomerNames());
             model.addAttribute("httpRequestTypeValues", seHttpRequestType.fetchAllHttpRequestValues());
             model.addAttribute("authTypeValues", seAuthType.fetchAllAuthTypeValues());
+            // Use redirect: to GetMapping to avoid duplicate code?
             return "CreateWebhook";
         }
         else {

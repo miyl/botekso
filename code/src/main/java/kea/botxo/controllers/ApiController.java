@@ -68,16 +68,16 @@ public class ApiController {
     // 2. Validate that the API Key matches the requested Webhook:
     // Get the webhook's customer
     String customerName = w.getCustomerName();
-    System.out.println("Customer name: " + customerName);
+    // System.out.println("Customer name: " + customerName);
     // Customer c = seCustomer.fetch(customerName);
     // Compare all api keys that customer has to the api key provided in the request
     List<ApiKey> keys = seApiKey.fetchAllForCustomer(customerName);
 
     boolean authenticated = false;
-    System.out.println("Key passed in request: " + receivedKey);
-    System.out.println("Number of keys found for customer: " + keys.size());
+    // System.out.println("Key passed in request: " + receivedKey);
+    // System.out.println("Number of keys found for customer: " + keys.size());
     for (ApiKey k : keys) {
-      System.out.println(k);
+      // System.out.println(k);
       String keyStr = k.getKey();
       if ( keyStr.equals(receivedKey) ) { 
         authenticated = true;
@@ -93,7 +93,7 @@ public class ApiController {
       // 3. Make appropriate request to third party (execute the webhook)
       RestTemplate restTemplate = new RestTemplate();
       ServerResponse sr = restTemplate.getForObject("http://localhost:9090/api/run", ServerResponse.class);
-      System.out.println(sr);
+      // System.out.println(sr);
 
       // 4. Send the response to the virtual assistant
       return sr;
