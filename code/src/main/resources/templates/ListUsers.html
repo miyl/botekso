@@ -41,7 +41,7 @@
           <td th:text="${user.accessLevel}"    ></td>
             <td>
 
-            <form action="/UpdateeUser" method='POST'>
+            <form action="/UpdateUser" method='POST'>
                 <input type="hidden" th:value="${user.name}" name="name"/>
                 <input type="submit" value="Update"/>
             </form>
