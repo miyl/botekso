@@ -8,7 +8,7 @@
 
 <div th:insert="fragments/topnav">Menu</div>
 
-<form th:object="${hrt}" method="POST">
+<form th:object="${httpRequestType}" method="POST">
     <table>
         <tr>
             <td><input placeholder="Http Request Type" th:field="*{httpRequestType}" /></td>

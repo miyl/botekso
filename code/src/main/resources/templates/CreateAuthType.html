@@ -8,7 +8,7 @@
 
 <div th:insert="fragments/topnav">Menu</div>
 
-<form th:object="${at}" method="POST">
+<form th:object="${authType}" method="POST">
     <table>
         <tr>
             <td><input placeholder="AuthType" th:field="*{authType}" /></td>

@@ -192,8 +192,7 @@ public class FrontendController implements WebMvcConfigurer {
      */
     //customer formular
     @GetMapping("/CreateCustomer")
-    public String showCustomerForm(Model model){
-        model.addAttribute("cm", new Customer());
+    public String showCustomerForm(Customer c){
         return "CreateCustomer";
     }
 
@@ -254,8 +253,7 @@ public class FrontendController implements WebMvcConfigurer {
      */
     //vis create user formular
     @GetMapping("/CreateUser")
-    public String showCreateUserForm(Model model){
-        model.addAttribute("u", new User()); // TODO: Maybe this is wrong, maybe it SHOULD take a user if validation is to work?
+    public String showCreateUserForm(User u){
         return "CreateUser";
     }
 
@@ -370,8 +368,7 @@ public class FrontendController implements WebMvcConfigurer {
      * @return The form for adding a new HTTP Request Type
      */
     @GetMapping("/CreateHttpRequestType")
-    public String showCreateHttpRequestType(Model model) {
-      model.addAttribute("hrt", new HttpRequestType());
+    public String showCreateHttpRequestType(HttpRequestType htr) {
        return "CreateHttpRequestType"; 
     }
 
@@ -430,9 +427,8 @@ public class FrontendController implements WebMvcConfigurer {
      * @return The form for adding a new Authentication Type
      */
     @GetMapping("/CreateAuthType")
-    public String showCreateAuthType(Model model) {
-      model.addAttribute("at", new AuthType());
-       return "CreateAuthType"; 
+    public String showCreateAuthType(AuthType a) {
+        return "CreateAuthType"; 
     }
 
     /**
