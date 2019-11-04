@@ -31,8 +31,8 @@
 
         <tbody>
         <tr th:each="apiKey : ${apiKeys}">
-            <td th:text="${apiKey.customerName}" />
-            <td th:text="${apiKey.key}"          />
+          <td th:text="${apiKey.customerName}"></td>
+          <td th:text="${apiKey.key}"></td>
             <td>
                 <!-- <form action="/UpdateAPIKey" method='POST'> -->
                 <!--     <input type="hidden" th:value="${apiKey.key}" name="name"/> -->

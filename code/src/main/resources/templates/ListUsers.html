@@ -40,19 +40,16 @@
           <td th:text="${user.name}"           ></td>
           <td th:text="${user.accessLevel}"    ></td>
             <td>
+              <form action="/UpdateUser" method='POST'>
+                  <input type="hidden" th:value="${user.name}" name="name"/>
+                  <input type="submit" value="Update"/>
+              </form>
 
-            <form action="/UpdateUser" method='POST'>
-                <input type="hidden" th:value="${user.name}" name="name"/>
-                <input type="submit" value="Update"/>
-            </form>
-
-            <form action="/DeleteUser" method='POST'>
-                <input type="hidden" th:value="${user.name}" name="name"/>
-                <input type="submit" value="Delete"/>
-            </form>
-        </td>
-
-
+              <form action="/DeleteUser" method='POST'>
+                  <input type="hidden" th:value="${user.name}" name="name"/>
+                  <input type="submit" value="Delete"/>
+              </form>
+            </td>
 
         </tr>
         </tbody>
